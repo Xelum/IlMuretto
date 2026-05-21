@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Il Muretto | Aperitivi, Feste ed Eventi</title>
+
+  <style>
+    :root {
+      --blue: #00a9d6;
+      --blue-dark: #007fa6;
+      --night: #081827;
+      --white: #ffffff;
+      --glass: rgba(255,255,255,0.14);
+      --text: #f5fbff;
+      --muted: #d7f5ff;
+      --accent: #fff176;
+      --pink: #ff5fa2;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--night);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      width: 100%;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.22), transparent 28%),
+        linear-gradient(180deg, #12b8e5 0%, #0297c5 38%, #06314a 100%);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 20;
+      padding: 14px 18px;
+      background: rgba(2, 34, 55, 0.45);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: white;
+      padding: 2px;
+    }
+
+    .brand span {
+      font-size: 1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      padding: 8px 9px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 108px 20px 40px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.14);
+      filter: blur(10px);
+      top: -140px;
+      right: -190px;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,95,162,0.28);
+      filter: blur(35px);
+      bottom: 80px;
+      left: -120px;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo-card {
+      width: 170px;
+      height: 170px;
+      border-radius: 36px;
+      padding: 10px;
+      background: rgba(255,255,255,0.18);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.24);
+      border: 1px solid rgba(255,255,255,0.20);
+      margin-bottom: 24px;
+      transform: rotate(-3deg);
+    }
+
+    .logo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 28px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      backdrop-filter: blur(12px);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 14vw, 6rem);
+      line-height: 0.9;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+      text-shadow: 0 16px 40px rgba(0,0,0,0.24);
+    }
+
+    h1 span {
+      display: block;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      color: var(--muted);
+      max-width: 620px;
+      margin-bottom: 28px;
+      font-weight: 500;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      max-width: 460px;
+    }
+
+    .btn {
+      width: 100%;
+      border: none;
+      padding: 17px 20px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 18px 34px rgba(0,0,0,0.22);
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--blue-dark);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.13);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      backdrop-filter: blur(12px);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      margin-bottom: 26px;
+    }
+
+    .section-title small {
+      display: inline-block;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 9vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      text-transform: uppercase;
+    }
+
+    .about {
+      background: #061d2c;
+    }
+
+    .about-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .glass-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+    }
+
+    .glass-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+
+    .glass-card p {
+      color: #cdefff;
+      line-height: 1.65;
+      font-size: 1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.10);
+    }
+
+    .feature strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .feature span {
+      color: #cdefff;
+      line-height: 1.45;
+      font-size: 0.95rem;
+    }
+
+    .gallery {
+      background:
+        radial-gradient(circle at top right, rgba(255,95,162,0.20), transparent 30%),
+        #04283d;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .photo {
+      min-height: 190px;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+    }
+
+    .photo.big {
+      grid-column: span 2;
+      min-height: 260px;
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.42));
+    }
+
+    .photo span {
+      position: absolute;
+      left: 18px;
+      bottom: 16px;
+      z-index: 2;
+      font-weight: 900;
+      font-size: 1rem;
+    }
+
+    .events {
+      background: #061d2c;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .event-card {
+      display: grid;
+      grid-template-columns: 78px 1fr;
+      gap: 15px;
+      padding: 18px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .date-box {
+      height: 78px;
+      border-radius: 24px;
+      background: linear-gradient(145deg, var(--accent), #ffffff);
+      color: #04324a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-weight: 950;
+      box-shadow: 0 14px 25px rgba(0,0,0,0.18);
+    }
+
+    .date-box b {
+      font-size: 1.9rem;
+      line-height: 1;
+    }
+
+    .date-box span {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+    }
+
+    .event-info h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .event-info p {
+      color: #cdefff;
+      line-height: 1.5;
+      font-size: 0.95rem;
+    }
+
+    .booking {
+      background:
+        linear-gradient(180deg, #04283d, #020f18);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: rgba(0,169,214,0.30);
+      border-radius: 50%;
+      filter: blur(40px);
+      right: -150px;
+      top: 120px;
+    }
+
+    form {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.12);
+      color: white;
+      padding: 16px 18px;
+      border-radius: 20px;
+      font-size: 1rem;
+      outline: none;
+      backdrop-filter: blur(14px);
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(255,255,255,0.72);
+    }
+
+    select {
+      color: white;
+    }
+
+    option {
+      color: #061d2c;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: #cdefff;
+      line-height: 1.5;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    .contact-strip {
+      display: grid;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .contact-pill {
+      padding: 16px 18px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+      font-weight: 800;
+    }
+
+    footer {
+      padding: 32px 20px 100px;
+      background: #020f18;
+      text-align: center;
+      color: #bdefff;
+    }
+
+    .bottom-bar {
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 30;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .bottom-bar a {
+      text-align: center;
+      padding: 15px 10px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 950;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.30);
+    }
+
+    .whatsapp {
+      background: #25d366;
+      color: #04210f;
+    }
+
+    .reserve {
+      background: white;
+      color: #007fa6;
+    }
+
+    .floating-badge {
+      margin-top: 24px;
+      display: inline-block;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-weight: 800;
+      animation: float 2.8s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @media (min-width: 760px) {
+      .buttons {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .photo-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .photo.big {
+        grid-column: span 2;
+      }
+
+      form {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      textarea,
+      form button,
+      .form-note {
+        grid-column: span 2;
+      }
+
+      .contact-strip {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .bottom-bar {
+        display: none;
+      }
+
+      footer {
+        padding-bottom: 32px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header>
+      <nav class="nav">
+        <a href="#" class="brand">
+          <img src="logo.jpg" alt="Logo Il Muretto">
+          <span>Il Muretto</span>
+        </a>
+
+        <div class="nav-links">
+          <a href="#foto">Foto</a>
+          <a href="#eventi">Eventi</a>
+          <a href="#prenota">Prenota</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+
+      <section class="hero">
+        <div class="hero-content">
+          <div class="logo-card">
+            <img src="logo.jpg" alt="Il Muretto">
+          </div>
+
+          <div class="tag">🌴 Aperitivi · Feste · Musica · Estate</div>
+
+          <h1>
+            Il tuo posto
+            <span>sul mare</span>
+          </h1>
+
+          <p>
+            Il Muretto è il locale perfetto per vivere aperitivi, serate tra amici,
+            feste private ed eventi speciali in un’atmosfera fresca, giovane e rilassata.
+            Scegli il giorno, invita chi vuoi e prenota il tuo tavolo.
+          </p>
+
+          <div class="buttons">
+            <a class="btn btn-primary" href="#prenota">Prenota il tuo tavolo</a>
+            <a class="btn btn-secondary" href="#eventi">Scopri gli eventi</a>
+          </div>
+
+          <div class="floating-badge">
+            ✨ Nuove serate in arrivo ogni settimana
+          </div>
+        </div>
+      </section>
+
+      <section class="about" id="locale">
+        <div class="container">
+          <div class="section-title">
+            <small>Il locale</small>
+            <h2>Fresco, semplice, memorabile.</h2>
+          </div>
+
+          <div class="about-grid">
+            <div class="glass-card">
+              <h3>Benvenuto al Muretto</h3>
+              <p>
+                Un posto pensato per chi vuole staccare, bere qualcosa di buono,
+                condividere un aperitivo e godersi la serata senza pensieri.
+                Qui ogni tavolo può diventare il punto di partenza di una festa,
+                di un compleanno, di un brindisi o di una serata improvvisata con gli amici.
+              </p>
+
+              <div class="features">
+                <div class="feature">
+                  <strong>🍹 Aperitivi</strong>
+                  <span>Drink, taglieri, atmosfera leggera e tramonti da ricordare.</span>
+                </div>
+
+                <div class="feature">
+                  <strong>🎉 Feste</strong>
+                  <span>Compleanni, lauree, gruppi di amici e tavoli riservati.</span>
+                </div>
+
+                <div class="feature">
+                  <strong>🎧 Eventi</strong>
+                  <span>DJ set, serate a tema, musica live e special night.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card">
+              <h3>Perché prenotare?</h3>
+              <p>
+                Con la prenotazione possiamo organizzare al meglio il tuo tavolo,
+                consigliarti la soluzione più adatta e preparare l’atmosfera giusta
+                per la tua serata.
+              </p>
+              <br>
+              <p>
+                Che sia un aperitivo tranquillo o una festa con tanti amici,
+                Il Muretto ti aspetta.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery" id="foto">
+        <div class="container">
+          <div class="section-title">
+            <small>Gallery</small>
+            <h2>Momenti da vivere.</h2>
+          </div>
+
+          <div class="photo-grid">
+            <div class="photo big" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80');">
+              <span>Il locale</span>
+            </div>
+
+            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');">
+              <span>Aperitivi</span>
+            </div>
+
+            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80');">
+              <span>Feste</span>
+            </div>
+
+            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80');">
+              <span>Serate</span>
+            </div>
+
+            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80');">
+              <span>Drink</span>
+            </div>
+          </div>
+
+          <p class="form-note">
+            Puoi sostituire queste immagini con foto reali del locale caricandole nella cartella del sito
+            e cambiando i link dentro il codice.
+          </p>
+        </div>
+      </section>
+
+      <section class="events" id="eventi">
+        <div class="container">
+          <div class="section-title">
+            <small>Eventi</small>
+            <h2>Le prossime serate.</h2>
+          </div>
+
+          <div class="event-list">
+
+            <div class="event-card">
+              <div class="date-box">
+                <b>14</b>
+                <span>Giu</span>
+              </div>
+              <div class="event-info">
+                <h3>Sunset Aperitivo</h3>
+                <p>
+                  Aperitivo al tramonto, drink speciali e musica chill per iniziare la serata con il mood giusto.
+                </p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div class="date-box">
+                <b>21</b>
+                <span>Giu</span>
+              </div>
+              <div class="event-info">
+                <h3>Friends Night</h3>
+                <p>
+                  Prenota il tavolo con il tuo gruppo: musica, brindisi e atmosfera perfetta per una serata tra amici.
+                </p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div class="date-box">
+                <b>28</b>
+                <span>Giu</span>
+              </div>
+              <div class="event-info">
+                <h3>Il Muretto Party</h3>
+                <p>
+                  La serata più attesa: DJ set, luci, cocktail e tavoli riservati fino a esaurimento posti.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="booking" id="prenota">
+        <div class="container">
+          <div class="section-title">
+            <small>Prenotazioni</small>
+            <h2>Prenota il tuo tavolo.</h2>
+          </div>
+
+          <div class="glass-card">
+            <h3>Festa, aperitivo o serata con gli amici?</h3>
+            <p>
+              Compila il modulo: ti aprirà WhatsApp con il messaggio già pronto da inviare al locale.
+              Potrai confermare data, orario, numero di persone e richieste speciali.
+            </p>
+
+            <form id="bookingForm">
+              <input type="text" id="nome" placeholder="Il tuo nome" required>
+              <input type="tel" id="telefono" placeholder="Telefono" required>
+
+              <input type="date" id="data" required>
+              <input type="time" id="orario" required>
+
+              <select id="persone" required>
+                <option value="">Numero persone</option>
+                <option>2 persone</option>
+                <option>3-5 persone</option>
+                <option>6-10 persone</option>
+                <option>11-20 persone</option>
+                <option>Più di 20 persone</option>
+              </select>
+
+              <select id="tipo" required>
+                <option value="">Tipo di prenotazione</option>
+                <option>Aperitivo</option>
+                <option>Festa di compleanno</option>
+                <option>Festa privata</option>
+                <option>Laurea</option>
+                <option>Serata con amici</option>
+                <option>Altro evento</option>
+              </select>
+
+              <textarea id="note" placeholder="Richieste speciali, torta, musica, tavolo, bottiglie, allergie..."></textarea>
+
+              <button type="submit" class="btn btn-primary">
+                Invia richiesta su WhatsApp
+              </button>
+
+              <p class="form-note">
+                La prenotazione sarà confermata solo dopo risposta da parte del locale.
+              </p>
+            </form>
+          </div>
+
+          <div class="contact-strip">
+            <a class="contact-pill" href="tel:+390000000000">
+              📞 Chiama ora
+            </a>
+
+            <a class="contact-pill" href="https://www.instagram.com/" target="_blank">
+              📸 Instagram
+            </a>
+
+            <a class="contact-pill" href="https://maps.google.com/" target="_blank">
+              📍 Come arrivare
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer>
+      <strong>Il Muretto</strong>
+      <br>
+      Aperitivi · Feste · Eventi
+      <br><br>
+      © 2026 Il Muretto. Tutti i diritti riservati.
+    </footer>
+
+    <div class="bottom-bar">
+      <a class="whatsapp" href="#prenota">Prenota</a>
+      <a class="reserve" href="#eventi">Eventi</a>
+    </div>
+
+  </div>
+
+  <script>
+    const form = document.getElementById("bookingForm");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const nome = document.getElementById("nome").value;
+      const telefono = document.getElementById("telefono").value;
+      const data = document.getElementById("data").value;
+      const orario = document.getElementById("orario").value;
+      const persone = document.getElementById("persone").value;
+      const tipo = document.getElementById("tipo").value;
+      const note = document.getElementById("note").value;
+
+      const numeroWhatsApp = "390000000000";
+
+      const messaggio =
+        "Ciao Il Muretto! Vorrei prenotare un tavolo.%0A%0A" +
+        "Nome: " + nome + "%0A" +
+        "Telefono: " + telefono + "%0A" +
+        "Data: " + data + "%0A" +
+        "Orario: " + orario + "%0A" +
+        "Persone: " + persone + "%0A" +
+        "Tipo prenotazione: " + tipo + "%0A" +
+        "Note: " + note + "%0A%0A" +
+        "Attendo conferma, grazie!";
+
+      const url = "https://wa.me/" + numeroWhatsApp + "?text=" + messaggio;
+
+      window.open(url, "_blank");
+    });
+  </script>
+
+</body>
+</html>
