@@ -675,7 +675,10 @@
     .photo.main-photo {
       min-height: 520px;
       background-image: url("il_locale.png");
+      background-size: contain;
+      background-repeat: no-repeat;
       background-position: center center;
+      background-color: rgba(2, 15, 24, 0.55);
     }
 
     .photo:hover {
@@ -691,6 +694,7 @@
         linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.54)),
         radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 38%);
       z-index: 1;
+      pointer-events: none;
     }
 
     .photo span {
@@ -982,6 +986,9 @@
       .photo.main-photo {
         grid-column: span 4;
         min-height: 620px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
       }
 
       form {
@@ -1029,6 +1036,8 @@
 
       .photo.main-photo {
         min-height: 560px;
+        background-size: contain;
+        background-repeat: no-repeat;
         background-position: center center;
       }
 
@@ -1232,31 +1241,26 @@
               <span>Il Muretto</span>
             </div>
 
-            <div class="photo-grid">
-  <div class="photo main-photo reveal">
-    <span>Il Muretto</span>
-  </div>
+            <div class="photo reveal" style="background-image: url('apertivi.png');">
+              <span>Aperitivi</span>
+            </div>
 
-  <div class="photo reveal" style="background-image: url('apertivi.png');">
-    <span>Aperitivi</span>
-  </div>
+            <div class="photo reveal" style="background-image: url('drink.png');">
+              <span>Drink</span>
+            </div>
 
-  <div class="photo reveal" style="background-image: url('feste.png');">
-    <span>Feste</span>
-  </div>
+            <div class="photo reveal" style="background-image: url('feste.png');">
+              <span>Feste</span>
+            </div>
 
-  <div class="photo reveal" style="background-image: url('serate.png');">
-    <span>Serate</span>
-  </div>
+            <div class="photo reveal" style="background-image: url('serate.png');">
+              <span>Serate</span>
+            </div>
 
-  <div class="photo reveal" style="background-image: url('drink.png');">
-    <span>Drink</span>
-  </div>
-
-  <div class="photo reveal" style="background-image: url('vista.png');">
-    <span>La vista</span>
-  </div>
-</div>
+            <div class="photo reveal" style="background-image: url('vista.png');">
+              <span>La vista</span>
+            </div>
+          </div>
         </div>
       </section>
 
