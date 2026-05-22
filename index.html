@@ -708,6 +708,90 @@
       max-width: 260px;
     }
 
+
+    .hours-section {
+      background:
+        radial-gradient(circle at 20% 10%, rgba(255,230,109,0.16), transparent 30%),
+        radial-gradient(circle at 90% 20%, rgba(255,79,154,0.14), transparent 28%),
+        linear-gradient(180deg, #04283d, #061d2c);
+    }
+
+    .hours-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      padding: 24px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 26px 60px rgba(0,0,0,0.20);
+      backdrop-filter: blur(18px);
+    }
+
+    .hours-card::before {
+      content: "";
+      position: absolute;
+      right: -70px;
+      top: -70px;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(255,230,109,0.16);
+    }
+
+    .hours-card::after {
+      content: "🌅";
+      position: absolute;
+      right: 20px;
+      top: 18px;
+      font-size: 3.1rem;
+      opacity: 0.28;
+      filter: drop-shadow(0 12px 24px rgba(0,0,0,0.25));
+    }
+
+    .hours-grid {
+      display: grid;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hour-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 15px 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hour-row strong {
+      font-size: 1rem;
+      color: white;
+    }
+
+    .hour-row span {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #fff176, #ffb347);
+      color: #06314a;
+      font-size: 0.88rem;
+      font-weight: 950;
+      white-space: nowrap;
+    }
+
+    .hours-note {
+      margin-top: 18px;
+      color: #fff7d6;
+      font-size: 1.15rem;
+      font-weight: 950;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
     .gallery {
       background:
         radial-gradient(circle at top right, rgba(255,95,162,0.20), transparent 30%),
@@ -1205,6 +1289,7 @@
 
         <div class="nav-links">
           <a href="#eventi">Eventi</a>
+          <a href="#menu">Menu</a>
           <a href="#prenota">Prenota</a>
           <a class="map-top" href="https://maps.app.goo.gl/eyapTr4ahb2AjWLf9" target="_blank">Mappa</a>
         </div>
@@ -1325,6 +1410,44 @@
               <h3>Menù e Snack</h3>
               <p>Snack, sfizi e proposte ideali da condividere con gli amici.</p>
             </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="hours-section" id="orari">
+        <div class="container">
+          <div class="section-title reveal">
+            <small>Orari</small>
+            <h2>Quando ci trovi aperti.</h2>
+            <p>
+              Vieni a trovarci per un aperitivo, una serata tra amici o un evento speciale.
+            </p>
+          </div>
+
+          <div class="hours-card reveal">
+            <div class="hours-grid">
+              <div class="hour-row">
+                <strong>Giovedì</strong>
+                <span>dalle 17:00</span>
+              </div>
+
+              <div class="hour-row">
+                <strong>Venerdì</strong>
+                <span>dalle 17:00</span>
+              </div>
+
+              <div class="hour-row">
+                <strong>Sabato</strong>
+                <span>dalle 15:00</span>
+              </div>
+
+              <div class="hour-row">
+                <strong>Domenica</strong>
+                <span>dalle 15:00</span>
+              </div>
+            </div>
+
+            <p class="hours-note">Ti aspettiamo 🌊</p>
           </div>
         </div>
       </section>
@@ -1535,6 +1658,8 @@
   <strong>Il Muretto</strong>
   <br>
   Montefiascone (VT), Via del Lago 95
+  <br>
+  Giovedì e venerdì dalle 17:00 · Sabato e domenica dalle 15:00
   <br>
   Aperitivi · Feste · Eventi sul Lago
   <br><br>
