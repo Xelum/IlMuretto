@@ -50,6 +50,10 @@
       display: block;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     .page {
       width: 100%;
       min-height: 100vh;
@@ -286,7 +290,7 @@
     .hero {
       position: relative;
       min-height: 100svh;
-      padding: 102px 18px 70px;
+      padding: 104px 18px 70px;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -326,36 +330,17 @@
       z-index: 4;
     }
 
-    .hero-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      background: rgba(255,255,255,0.22);
-      border: 1px solid rgba(255,255,255,0.26);
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 900;
-      margin-bottom: 18px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.10);
-    }
-
     .main-title {
-      font-size: clamp(4.5rem, 24vw, 10rem);
-      line-height: 0.78;
-      letter-spacing: -7px;
+      font-size: clamp(3.2rem, 16vw, 8.6rem);
+      line-height: 0.9;
+      letter-spacing: -5px;
       text-transform: uppercase;
-      margin-bottom: 18px;
+      margin-bottom: 22px;
       color: white;
+      white-space: nowrap;
       text-shadow:
         0 16px 40px rgba(0,0,0,0.25),
         0 0 30px rgba(255,255,255,0.20);
-    }
-
-    .main-title span {
-      display: block;
-      color: var(--yellow);
     }
 
     .hero-subtitle {
@@ -581,49 +566,91 @@
       font-size: 0.95rem;
     }
 
-    .experience {
+    .menu-section {
       background:
         radial-gradient(circle at 80% 0%, rgba(255,79,154,0.18), transparent 30%),
         linear-gradient(180deg, #061d2c, #04283d);
     }
 
-    .experience-track {
+    .menu-grid {
       display: grid;
       gap: 14px;
     }
 
-    .moment {
-      display: grid;
-      grid-template-columns: 56px 1fr;
-      gap: 14px;
-      align-items: start;
-      padding: 18px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.13);
+    .menu-card {
+      border: none;
+      width: 100%;
+      min-height: 150px;
+      padding: 22px;
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.17), rgba(255,255,255,0.07));
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      text-align: left;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.18);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.28s ease;
     }
 
-    .moment-icon {
-      width: 56px;
-      height: 56px;
-      border-radius: 20px;
+    .menu-card::before {
+      content: "";
+      position: absolute;
+      right: -45px;
+      top: -45px;
+      width: 135px;
+      height: 135px;
+      border-radius: 50%;
+      background: rgba(255,230,109,0.14);
+    }
+
+    .menu-card::after {
+      content: "Apri";
+      position: absolute;
+      right: 18px;
+      bottom: 18px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.16);
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-4px);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.22), rgba(255,255,255,0.09));
+    }
+
+    .menu-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 21px;
       display: grid;
       place-items: center;
-      background: linear-gradient(145deg, rgba(255,230,109,0.95), rgba(255,255,255,0.80));
+      background: linear-gradient(145deg, rgba(255,230,109,0.95), rgba(255,255,255,0.82));
       color: #06314a;
-      font-size: 1.4rem;
+      font-size: 1.55rem;
+      margin-bottom: 18px;
       box-shadow: 0 14px 26px rgba(0,0,0,0.18);
     }
 
-    .moment h3 {
-      font-size: 1.15rem;
-      margin-bottom: 6px;
+    .menu-card h3 {
+      font-size: 1.55rem;
+      line-height: 1;
+      margin-bottom: 8px;
     }
 
-    .moment p {
+    .menu-card p {
       color: var(--muted);
-      line-height: 1.5;
-      font-size: 0.96rem;
+      line-height: 1.45;
+      font-size: 0.95rem;
+      max-width: 260px;
     }
 
     .gallery {
@@ -880,6 +907,57 @@
       z-index: 3;
     }
 
+    .menu-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(2, 15, 24, 0.88);
+      backdrop-filter: blur(16px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 22px;
+    }
+
+    .menu-modal.open {
+      display: flex;
+    }
+
+    .menu-modal-content {
+      width: min(100%, 720px);
+      max-height: 86svh;
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      box-shadow: 0 30px 90px rgba(0,0,0,0.48);
+    }
+
+    .menu-modal img {
+      width: 100%;
+      max-height: 86svh;
+      object-fit: contain;
+      background: #020f18;
+    }
+
+    .close-modal {
+      position: fixed;
+      top: 18px;
+      right: 18px;
+      width: 46px;
+      height: 46px;
+      border: none;
+      border-radius: 50%;
+      background: white;
+      color: #06314a;
+      font-size: 1.4rem;
+      font-weight: 950;
+      cursor: pointer;
+      z-index: 210;
+      box-shadow: 0 14px 32px rgba(0,0,0,0.28);
+    }
+
     @media (min-width: 760px) {
       .hero-card {
         max-width: 690px;
@@ -898,12 +976,8 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .experience-track {
+      .menu-grid {
         grid-template-columns: repeat(3, 1fr);
-      }
-
-      .moment {
-        grid-template-columns: 1fr;
       }
 
       .photo-grid {
@@ -941,7 +1015,8 @@
       }
 
       .main-title {
-        letter-spacing: -5px;
+        font-size: clamp(3rem, 15.5vw, 4.5rem);
+        letter-spacing: -3px;
       }
 
       .hero-subtitle {
@@ -983,7 +1058,8 @@
       }
 
       .main-title {
-        font-size: 4rem;
+        font-size: 3rem;
+        letter-spacing: -2px;
       }
 
       .hero-subtitle {
@@ -1040,12 +1116,7 @@
 
       <section class="hero">
         <div class="hero-content reveal">
-          <div class="hero-kicker">🌊 Lago · Estate · Drink · Musica</div>
-
-          <h1 class="main-title">
-            Il
-            <span>Muretto</span>
-          </h1>
+          <h1 class="main-title">Il Muretto</h1>
 
           <div class="hero-card">
             <h2 class="hero-subtitle">
@@ -1130,37 +1201,31 @@
         </div>
       </section>
 
-      <section class="experience">
+      <section class="menu-section" id="menu">
         <div class="container">
           <div class="section-title reveal">
-            <small>Vivi la serata</small>
-            <h2>Dal primo drink all’ultimo brindisi.</h2>
+            <small>Menù</small>
+            <h2>Scegli cosa gustare.</h2>
           </div>
 
-          <div class="experience-track">
-            <div class="moment reveal">
-              <div class="moment-icon">🌅</div>
-              <div>
-                <h3>Arrivi al tramonto</h3>
-                <p>La luce cala, il locale si illumina e il tavolo è già pronto per te.</p>
-              </div>
-            </div>
+          <div class="menu-grid">
+            <button class="menu-card reveal" type="button" data-menu="drink_list.png" data-title="Drink List">
+              <div class="menu-icon">🍹</div>
+              <h3>Drink List</h3>
+              <p>Scopri cocktail, drink e proposte perfette per l’aperitivo.</p>
+            </button>
 
-            <div class="moment reveal">
-              <div class="moment-icon">🍸</div>
-              <div>
-                <h3>Ordini, brindisi e relax</h3>
-                <p>Drink freschi, aperitivo e il mood giusto per iniziare la serata.</p>
-              </div>
-            </div>
+            <button class="menu-card reveal" type="button" data-menu="menu_pizza.png" data-title="Menù Pizza">
+              <div class="menu-icon">🍕</div>
+              <h3>Menù Pizza</h3>
+              <p>Apri il menù dedicato alle pizze e scegli la tua preferita.</p>
+            </button>
 
-            <div class="moment reveal">
-              <div class="moment-icon">🎶</div>
-              <div>
-                <h3>La serata prende vita</h3>
-                <p>Musica, amici, foto e quell’atmosfera che fa venire voglia di restare.</p>
-              </div>
-            </div>
+            <button class="menu-card reveal" type="button" data-menu="menu.png" data-title="Menù e Snack">
+              <div class="menu-icon">🍟</div>
+              <h3>Menù e Snack</h3>
+              <p>Snack, sfizi e proposte ideali da condividere con gli amici.</p>
+            </button>
           </div>
         </div>
       </section>
@@ -1197,10 +1262,6 @@
               <span>Drink</span>
             </div>
           </div>
-
-          <p class="form-note reveal">
-            Per usare altre foto reali, caricale nella cartella del sito e sostituisci i link delle immagini.
-          </p>
         </div>
       </section>
 
@@ -1209,10 +1270,6 @@
           <div class="section-title reveal">
             <small>Eventi</small>
             <h2>Le prossime serate.</h2>
-            <p>
-              Questa sezione può essere aggiornata ogni settimana con DJ set, feste,
-              serate speciali, aperitivi al tramonto e appuntamenti del locale.
-            </p>
           </div>
 
           <div class="event-list">
@@ -1369,6 +1426,13 @@
 
   </div>
 
+  <div class="menu-modal" id="menuModal">
+    <button class="close-modal" id="closeModal" type="button">×</button>
+    <div class="menu-modal-content">
+      <img id="modalImage" src="" alt="Menù Il Muretto">
+    </div>
+  </div>
+
   <script>
     const form = document.getElementById("bookingForm");
 
@@ -1429,6 +1493,43 @@
       creatures.forEach(function(creature, index) {
         creature.style.marginTop = scrollY * (0.015 + index * 0.004) + "px";
       });
+    });
+
+    const menuCards = document.querySelectorAll(".menu-card");
+    const menuModal = document.getElementById("menuModal");
+    const modalImage = document.getElementById("modalImage");
+    const closeModal = document.getElementById("closeModal");
+
+    menuCards.forEach(function(card) {
+      card.addEventListener("click", function() {
+        const image = card.getAttribute("data-menu");
+        const title = card.getAttribute("data-title");
+
+        modalImage.src = image;
+        modalImage.alt = title;
+        menuModal.classList.add("open");
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeMenuModal() {
+      menuModal.classList.remove("open");
+      modalImage.src = "";
+      document.body.style.overflow = "";
+    }
+
+    closeModal.addEventListener("click", closeMenuModal);
+
+    menuModal.addEventListener("click", function(event) {
+      if (event.target === menuModal) {
+        closeMenuModal();
+      }
+    });
+
+    document.addEventListener("keydown", function(event) {
+      if (event.key === "Escape") {
+        closeMenuModal();
+      }
     });
   </script>
 
