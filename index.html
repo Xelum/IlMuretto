@@ -7,6 +7,8 @@
   <title>Il Muretto | Aperitivi, Feste ed Eventi sul Lago</title>
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Pacifico&display=swap');
+
     :root {
       --sky: #38d8ff;
       --sky-soft: #7ee8ff;
@@ -326,32 +328,44 @@
     }
 
     .main-title {
-      font-size: clamp(3.2rem, 16vw, 8.6rem);
+      font-family: "Luckiest Guy", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      font-size: clamp(3.1rem, 15vw, 8.4rem);
       line-height: 0.9;
-      letter-spacing: -5px;
-      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-transform: none;
       margin-bottom: 22px;
       color: white;
       white-space: nowrap;
       text-shadow:
-        0 16px 40px rgba(0,0,0,0.25),
-        0 0 30px rgba(255,255,255,0.20);
+        0 10px 0 rgba(0, 127, 166, 0.45),
+        0 18px 40px rgba(0,0,0,0.24),
+        0 0 34px rgba(255,255,255,0.26);
     }
 
     .hero-subtitle {
-      font-size: clamp(2.2rem, 12vw, 5rem);
-      line-height: 0.92;
-      letter-spacing: -3px;
-      text-transform: uppercase;
+      font-size: clamp(2.15rem, 11vw, 5rem);
+      line-height: 0.95;
+      letter-spacing: -1px;
+      text-transform: none;
       margin-bottom: 24px;
-      color: #06314a;
-      text-shadow: 0 8px 24px rgba(255,255,255,0.18);
+      font-family: "Pacifico", cursive;
+      color: #fff7d6;
+      text-shadow:
+        0 6px 0 rgba(0,127,166,0.22),
+        0 18px 35px rgba(0,0,0,0.22);
     }
 
     .hero-subtitle span {
       display: block;
-      color: white;
-      text-shadow: 0 16px 40px rgba(0,0,0,0.20);
+      font-family: "Luckiest Guy", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #fff176, #ff9f43, #ff4f9a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: none;
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,0.22));
     }
 
     .hero p {
@@ -1016,12 +1030,12 @@
       }
 
       .main-title {
-        font-size: clamp(3rem, 15.5vw, 4.5rem);
-        letter-spacing: -3px;
+        font-size: clamp(2.9rem, 14.2vw, 4.4rem);
+        letter-spacing: 0;
       }
 
       .hero-subtitle {
-        letter-spacing: -2px;
+        letter-spacing: -1px;
       }
 
       .nav-links {
@@ -1046,8 +1060,8 @@
 
     @media (max-width: 360px) {
       .main-title {
-        font-size: 3rem;
-        letter-spacing: -2px;
+        font-size: 2.75rem;
+        letter-spacing: 0;
       }
 
       .hero-subtitle {
@@ -1261,44 +1275,50 @@
           </div>
 
           <div class="event-list">
+
             <div class="event-card reveal">
               <div class="date-box">
-                <b>14</b>
-                <span>Giu</span>
+                <b>22</b>
+                <span>Mag</span>
               </div>
               <div class="event-info">
-                <h3>Sunset Aperitivo</h3>
+                <h3>Serata Stargate</h3>
                 <p>
-                  Aperitivo al tramonto, drink speciali e musica chill per iniziare la serata con il mood giusto.
+                  Venerdì 22 maggio 2026 dalle 23:00. Free entry con selezione all’ingresso.
+                  In console Dedo Ancorva, Ambigual e Michele Sergio. Voice: Niko Mec.
                 </p>
               </div>
             </div>
 
             <div class="event-card reveal">
               <div class="date-box">
-                <b>21</b>
-                <span>Giu</span>
+                <b>23</b>
+                <span>Mag</span>
               </div>
               <div class="event-info">
-                <h3>Friends Night</h3>
+                <h3>Cena Spettacolo & Disco</h3>
                 <p>
-                  Prenota il tavolo con il tuo gruppo: musica, brindisi e atmosfera perfetta per una serata tra amici.
+                  Sabato 23 maggio cena spettacolo con musica italiana da cantare insieme ad Alessia.
+                  Menù cena a 20 euro con prosecco di benvenuto, antipasto assortito, giro pizza no stop,
+                  patatine fritte e acqua. A seguire Disco anni 90 con DJ Carlo Quondam.
                 </p>
               </div>
             </div>
 
             <div class="event-card reveal">
               <div class="date-box">
-                <b>28</b>
-                <span>Giu</span>
+                <b>24</b>
+                <span>Mag</span>
               </div>
               <div class="event-info">
-                <h3>Il Muretto Party</h3>
+                <h3>Club Bunny</h3>
                 <p>
-                  DJ set, luci, cocktail e tavoli riservati fino a esaurimento posti.
+                  Domenica 24 maggio Urban Reggaeton Party. Dalle 17:00 alle 22:00,
+                  Club Bunny x Il Muretto, con musica reggaeton e atmosfera super estiva.
                 </p>
               </div>
             </div>
+
           </div>
         </div>
       </section>
