@@ -673,12 +673,15 @@
     }
 
     .photo.main-photo {
-      min-height: 520px;
-      background-image: url("il_locale.png");
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-color: rgba(2, 15, 24, 0.55);
+      min-height: auto;
+      background: none;
+      background-color: rgba(2, 15, 24, 0.35);
+    }
+
+    .photo.main-photo img {
+      width: 100%;
+      height: auto;
+      display: block;
     }
 
     .photo:hover {
@@ -985,10 +988,6 @@
 
       .photo.main-photo {
         grid-column: span 4;
-        min-height: 620px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
       }
 
       form {
@@ -1032,13 +1031,6 @@
 
       .nav-links a {
         padding: 7px 7px;
-      }
-
-      .photo.main-photo {
-        min-height: 560px;
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
       }
 
       .event-card {
@@ -1238,6 +1230,7 @@
 
           <div class="photo-grid">
             <div class="photo main-photo reveal">
+              <img src="il_locale.png" alt="Il Muretto al tramonto">
               <span>Il Muretto</span>
             </div>
 
