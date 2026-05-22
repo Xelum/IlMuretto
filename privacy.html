@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Privacy Policy | Il Muretto</title>
+
+  <style>
+    :root {
+      --blue: #007fa6;
+      --deep: #04131f;
+      --deep-2: #061d2c;
+      --white: #ffffff;
+      --yellow: #ffe66d;
+      --cyan: #54dcff;
+      --muted: #cdefff;
+      --glass-border: rgba(255,255,255,0.16);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 20% 10%, rgba(84,220,255,0.28), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(255,230,109,0.16), transparent 24%),
+        linear-gradient(180deg, #54dcff 0%, #0795c1 28%, #061d2c 68%, #020f18 100%);
+      color: var(--white);
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 0 40px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 950;
+      color: white;
+      text-decoration: none;
+    }
+
+    .brand img {
+      width: 46px;
+      height: 46px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: white;
+      padding: 2px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
+    }
+
+    .brand span {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: #06314a;
+      background: white;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 950;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
+      white-space: nowrap;
+    }
+
+    main {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.07));
+      border: 1px solid var(--glass-border);
+      border-radius: 30px;
+      padding: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 28px 80px rgba(0,0,0,0.26);
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 11vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 14px;
+      color: white;
+      text-transform: uppercase;
+      text-shadow:
+        0 14px 38px rgba(0,0,0,0.30),
+        0 0 30px rgba(255,255,255,0.18);
+    }
+
+    .intro {
+      color: #eaffff;
+      font-size: 1rem;
+      margin-bottom: 26px;
+      max-width: 760px;
+    }
+
+    section {
+      padding: 20px 0;
+      border-top: 1px solid rgba(255,255,255,0.14);
+    }
+
+    section:first-of-type {
+      border-top: none;
+      padding-top: 4px;
+    }
+
+    h2 {
+      color: var(--yellow);
+      font-size: 1.28rem;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 10px 0 0;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    a {
+      color: var(--yellow);
+      font-weight: 900;
+    }
+
+    .note {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,230,109,0.12);
+      border: 1px solid rgba(255,230,109,0.22);
+    }
+
+    .note p {
+      margin: 0;
+      color: #fff7d6;
+      font-size: 0.92rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 26px 10px 0;
+      color: #dff8ff;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 430px) {
+      body {
+        padding: 14px;
+      }
+
+      main {
+        padding: 20px;
+        border-radius: 26px;
+      }
+
+      .brand span {
+        display: none;
+      }
+
+      .back-link {
+        font-size: 0.8rem;
+        padding: 9px 12px;
+      }
+
+      h1 {
+        letter-spacing: -1.4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="page">
+
+    <div class="topbar">
+      <a class="brand" href="index.html">
+        <img src="logo.jpg" alt="Logo Il Muretto">
+        <span>Il Muretto</span>
+      </a>
+
+      <a class="back-link" href="index.html">Torna al sito</a>
+    </div>
+
+    <main>
+      <h1>Privacy Policy</h1>
+
+      <p class="intro">
+        Questa informativa descrive in modo semplice come vengono trattati i dati personali degli utenti che utilizzano il sito del locale “Il Muretto”, in particolare quando viene inviata una richiesta di prenotazione tramite WhatsApp.
+      </p>
+
+      <section>
+        <h2>1. Titolare del trattamento</h2>
+        <p>
+          Il titolare del trattamento è il locale “Il Muretto”.
+        </p>
+        <p>
+          Per informazioni o richieste relative alla privacy è possibile contattare il locale tramite i recapiti presenti sul sito, in particolare tramite telefono o WhatsApp.
+        </p>
+      </section>
+
+      <section>
+        <h2>2. Dati personali trattati</h2>
+        <p>
+          Attraverso il modulo di prenotazione presente sul sito possono essere inseriti e trasmessi i seguenti dati:
+        </p>
+        <ul>
+          <li>nome;</li>
+          <li>numero di telefono;</li>
+          <li>data e orario della prenotazione;</li>
+          <li>numero di persone;</li>
+          <li>tipo di prenotazione o evento;</li>
+          <li>eventuali richieste speciali inserite nel campo note.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>3. Finalità del trattamento</h2>
+        <p>
+          I dati vengono utilizzati esclusivamente per gestire la richiesta di prenotazione, ricontattare l’utente, organizzare il tavolo, l’aperitivo, la festa o l’evento richiesto.
+        </p>
+        <p>
+          I dati non vengono utilizzati per finalità di marketing automatico, profilazione o invio di comunicazioni promozionali non richieste.
+        </p>
+      </section>
+
+      <section>
+        <h2>4. Modalità di invio dei dati</h2>
+        <p>
+          Il modulo presente sul sito non salva direttamente i dati in un database.
+        </p>
+        <p>
+          Dopo la compilazione, viene generato un messaggio WhatsApp già predisposto con i dati inseriti dall’utente. L’invio effettivo avviene tramite WhatsApp, solo dopo conferma da parte dell’utente.
+        </p>
+      </section>
+
+      <section>
+        <h2>5. Base giuridica del trattamento</h2>
+        <p>
+          Il trattamento dei dati avviene per dare seguito alla richiesta dell’utente, cioè per gestire una prenotazione, una richiesta di informazioni o l’organizzazione di un evento.
+        </p>
+      </section>
+
+      <section>
+        <h2>6. Conservazione dei dati</h2>
+        <p>
+          I dati vengono conservati per il tempo necessario alla gestione della prenotazione e delle eventuali comunicazioni collegate.
+        </p>
+        <p>
+          Quando non sono più necessari, possono essere cancellati dai canali di comunicazione utilizzati dal locale.
+        </p>
+      </section>
+
+      <section>
+        <h2>7. Comunicazione a terzi</h2>
+        <p>
+          I dati non vengono venduti, ceduti o comunicati a terzi per finalità commerciali.
+        </p>
+        <p>
+          L’utilizzo di WhatsApp comporta il trattamento dei dati anche da parte del relativo fornitore del servizio, secondo le condizioni e informative privacy di WhatsApp/Meta.
+        </p>
+      </section>
+
+      <section>
+        <h2>8. Cookie e strumenti di tracciamento</h2>
+        <p>
+          Il sito non utilizza cookie di profilazione.
+        </p>
+        <p>
+          Il sito può utilizzare elementi tecnici necessari al suo corretto funzionamento o collegamenti verso servizi esterni, come WhatsApp, Instagram e Google Maps, che si aprono solo quando l’utente decide di cliccare sui relativi link.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. Link a servizi esterni</h2>
+        <p>
+          Il sito contiene link verso servizi esterni, come Instagram, WhatsApp e Google Maps.
+        </p>
+        <p>
+          Quando l’utente clicca su questi link, viene indirizzato verso piattaforme esterne che gestiscono i dati secondo le rispettive informative privacy.
+        </p>
+      </section>
+
+      <section>
+        <h2>10. Diritti dell’utente</h2>
+        <p>
+          L’utente può richiedere informazioni sui propri dati personali, chiederne la correzione o la cancellazione, contattando il locale tramite i recapiti indicati sul sito.
+        </p>
+      </section>
+
+      <section>
+        <h2>11. Aggiornamenti</h2>
+        <p>
+          La presente informativa può essere aggiornata in caso di modifiche al sito, ai servizi offerti o alle modalità di trattamento dei dati.
+        </p>
+      </section>
+
+      <div class="note">
+        <p>
+          Ultimo aggiornamento: maggio 2026.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      © 2026 Il Muretto. Tutti i diritti riservati.
+    </footer>
+
+  </div>
+
+</body>
+</html>
