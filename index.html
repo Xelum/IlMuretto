@@ -8,6 +8,8 @@
 
   <style>
     :root {
+      --sky: #38d8ff;
+      --sky-soft: #7ee8ff;
       --cyan: #00a9d6;
       --blue: #007fa6;
       --deep: #04131f;
@@ -53,9 +55,16 @@
       min-height: 100vh;
       overflow: hidden;
       background:
-        radial-gradient(circle at 15% 20%, rgba(255,79,154,0.14), transparent 28%),
-        radial-gradient(circle at 90% 18%, rgba(0,217,255,0.18), transparent 26%),
-        linear-gradient(180deg, #03131f 0%, #061d2c 38%, #020f18 100%);
+        linear-gradient(
+          180deg,
+          #54dcff 0%,
+          #1dbde7 18%,
+          #0795c1 35%,
+          #064c70 54%,
+          #061d2c 75%,
+          #020f18 100%
+        );
+      position: relative;
     }
 
     .ambient {
@@ -64,10 +73,10 @@
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(circle at 50% 10%, rgba(255,230,109,0.10), transparent 18%),
-        radial-gradient(circle at 15% 25%, rgba(255,79,154,0.16), transparent 24%),
-        radial-gradient(circle at 88% 18%, rgba(0,217,255,0.18), transparent 24%),
-        linear-gradient(180deg, rgba(15,184,227,0.34) 0%, rgba(2,142,189,0.20) 36%, rgba(6,49,74,0.20) 68%, rgba(2,15,24,0.76) 100%);
+        radial-gradient(circle at 18% 14%, rgba(255,255,255,0.35), transparent 18%),
+        radial-gradient(circle at 84% 18%, rgba(255,230,109,0.18), transparent 20%),
+        radial-gradient(circle at 50% 42%, rgba(255,79,154,0.12), transparent 26%),
+        linear-gradient(180deg, rgba(84,220,255,0.38), rgba(2,15,24,0.62));
     }
 
     .bubble-field {
@@ -91,102 +100,18 @@
       animation: bubbleUp linear infinite;
     }
 
-    .bubble:nth-child(1) {
-      left: 5%;
-      width: 14px;
-      height: 14px;
-      animation-duration: 10s;
-      animation-delay: 0s;
-    }
-
-    .bubble:nth-child(2) {
-      left: 14%;
-      width: 24px;
-      height: 24px;
-      animation-duration: 14s;
-      animation-delay: 1.5s;
-    }
-
-    .bubble:nth-child(3) {
-      left: 25%;
-      width: 10px;
-      height: 10px;
-      animation-duration: 9s;
-      animation-delay: 3s;
-    }
-
-    .bubble:nth-child(4) {
-      left: 36%;
-      width: 18px;
-      height: 18px;
-      animation-duration: 12s;
-      animation-delay: 2s;
-    }
-
-    .bubble:nth-child(5) {
-      left: 48%;
-      width: 30px;
-      height: 30px;
-      animation-duration: 17s;
-      animation-delay: 4s;
-    }
-
-    .bubble:nth-child(6) {
-      left: 62%;
-      width: 13px;
-      height: 13px;
-      animation-duration: 10s;
-      animation-delay: 5s;
-    }
-
-    .bubble:nth-child(7) {
-      left: 72%;
-      width: 22px;
-      height: 22px;
-      animation-duration: 15s;
-      animation-delay: 1s;
-    }
-
-    .bubble:nth-child(8) {
-      left: 84%;
-      width: 11px;
-      height: 11px;
-      animation-duration: 9s;
-      animation-delay: 6s;
-    }
-
-    .bubble:nth-child(9) {
-      left: 93%;
-      width: 26px;
-      height: 26px;
-      animation-duration: 18s;
-      animation-delay: 2.8s;
-    }
-
-    .bubble:nth-child(10) {
-      left: 55%;
-      width: 9px;
-      height: 9px;
-      animation-duration: 8s;
-      animation-delay: 7s;
-    }
-
-    .bubble:nth-child(11) {
-      left: 31%;
-      width: 34px;
-      height: 34px;
-      animation-duration: 20s;
-      animation-delay: 8s;
-      opacity: 0.70;
-    }
-
-    .bubble:nth-child(12) {
-      left: 78%;
-      width: 16px;
-      height: 16px;
-      animation-duration: 11s;
-      animation-delay: 9s;
-    }
+    .bubble:nth-child(1) { left: 5%; width: 14px; height: 14px; animation-duration: 10s; animation-delay: 0s; }
+    .bubble:nth-child(2) { left: 14%; width: 24px; height: 24px; animation-duration: 14s; animation-delay: 1.5s; }
+    .bubble:nth-child(3) { left: 25%; width: 10px; height: 10px; animation-duration: 9s; animation-delay: 3s; }
+    .bubble:nth-child(4) { left: 36%; width: 18px; height: 18px; animation-duration: 12s; animation-delay: 2s; }
+    .bubble:nth-child(5) { left: 48%; width: 30px; height: 30px; animation-duration: 17s; animation-delay: 4s; }
+    .bubble:nth-child(6) { left: 62%; width: 13px; height: 13px; animation-duration: 10s; animation-delay: 5s; }
+    .bubble:nth-child(7) { left: 72%; width: 22px; height: 22px; animation-duration: 15s; animation-delay: 1s; }
+    .bubble:nth-child(8) { left: 84%; width: 11px; height: 11px; animation-duration: 9s; animation-delay: 6s; }
+    .bubble:nth-child(9) { left: 93%; width: 26px; height: 26px; animation-duration: 18s; animation-delay: 2.8s; }
+    .bubble:nth-child(10) { left: 55%; width: 9px; height: 9px; animation-duration: 8s; animation-delay: 7s; }
+    .bubble:nth-child(11) { left: 31%; width: 34px; height: 34px; animation-duration: 20s; animation-delay: 8s; opacity: 0.70; }
+    .bubble:nth-child(12) { left: 78%; width: 16px; height: 16px; animation-duration: 11s; animation-delay: 9s; }
 
     @keyframes bubbleUp {
       0% {
@@ -209,22 +134,69 @@
       }
     }
 
-    .water-lines {
+    .sea-creature {
+      position: fixed;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.34;
+      filter: drop-shadow(0 14px 24px rgba(0,0,0,0.18));
+      animation: floatCreature 5s ease-in-out infinite;
+    }
+
+    .crab {
+      left: 14px;
+      top: 220px;
+      font-size: 3.4rem;
+      animation-delay: 0s;
+    }
+
+    .fish {
+      right: 22px;
+      top: 390px;
+      font-size: 2.8rem;
+      animation-delay: 1s;
+    }
+
+    .shell {
+      left: 28px;
+      bottom: 190px;
+      font-size: 2.7rem;
+      animation-delay: 1.8s;
+    }
+
+    .starfish {
+      right: 24px;
+      bottom: 110px;
+      font-size: 2.9rem;
+      animation-delay: 2.4s;
+    }
+
+    @keyframes floatCreature {
+      0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+    .wave-lines {
       position: fixed;
       left: -20%;
       right: -20%;
-      top: 300px;
-      height: 280px;
+      top: 260px;
+      height: 300px;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.22;
+      opacity: 0.18;
       background:
         repeating-linear-gradient(
           180deg,
-          rgba(255,255,255,0.14) 0,
-          rgba(255,255,255,0.14) 2px,
+          rgba(255,255,255,0.20) 0,
+          rgba(255,255,255,0.20) 2px,
           transparent 3px,
-          transparent 22px
+          transparent 24px
         );
       transform: skewY(-2deg);
       mask-image: linear-gradient(to bottom, transparent, black 18%, transparent 90%);
@@ -247,7 +219,7 @@
       width: 100%;
       z-index: 60;
       padding: 12px 14px;
-      background: rgba(2, 18, 31, 0.45);
+      background: rgba(2, 18, 31, 0.30);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(255,255,255,0.12);
     }
@@ -296,8 +268,8 @@
     .nav-links a {
       padding: 8px 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.12);
     }
 
     .nav-links a.map-top {
@@ -314,67 +286,35 @@
     .hero {
       position: relative;
       min-height: 100svh;
+      padding: 102px 18px 70px;
+      display: flex;
+      align-items: center;
       overflow: hidden;
-      background: #061d2c;
-      padding-top: 82px;
       isolation: isolate;
     }
 
-    .hero-image-wrap {
-      position: relative;
-      width: 100%;
-      min-height: calc(100svh - 82px);
-      display: flex;
-      align-items: stretch;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .hero-image {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      transform: scale(1.01);
-      animation: heroBreath 12s ease-in-out infinite alternate;
-    }
-
-    .hero-image-wrap::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-      background:
-        linear-gradient(180deg, rgba(2,15,24,0.08) 0%, rgba(2,15,24,0.16) 35%, rgba(2,15,24,0.78) 82%, #061d2c 100%),
-        radial-gradient(circle at 70% 48%, rgba(255,79,154,0.22), transparent 35%),
-        radial-gradient(circle at 34% 70%, rgba(0,169,214,0.20), transparent 38%);
-      pointer-events: none;
-    }
-
-    .hero-image-wrap::after {
+    .hero::before {
       content: "";
       position: absolute;
       left: -20%;
       right: -20%;
-      bottom: -70px;
-      height: 180px;
-      z-index: 2;
+      bottom: -120px;
+      height: 300px;
       background:
-        radial-gradient(ellipse at center, rgba(255,255,255,0.18), transparent 58%),
-        linear-gradient(180deg, rgba(6,29,44,0), #061d2c 66%);
-      filter: blur(15px);
-      pointer-events: none;
+        radial-gradient(ellipse at center, rgba(255,255,255,0.34), transparent 58%),
+        linear-gradient(180deg, rgba(84,220,255,0), rgba(7,149,193,0.55));
+      filter: blur(14px);
+      z-index: -1;
+      animation: shimmer 5s ease-in-out infinite alternate;
     }
 
-    @keyframes heroBreath {
+    @keyframes shimmer {
       from {
-        transform: scale(1.01);
+        transform: translateX(-18px);
       }
 
       to {
-        transform: scale(1.055);
+        transform: translateX(18px);
       }
     }
 
@@ -384,63 +324,74 @@
       margin: auto;
       position: relative;
       z-index: 4;
-      padding: 0 18px 36px;
-      align-self: flex-end;
-      display: flex;
-      align-items: flex-end;
     }
 
-    .hero-panel {
-      width: 100%;
-      background:
-        linear-gradient(145deg, rgba(2,15,24,0.50), rgba(255,255,255,0.08));
-      border: 1px solid rgba(255,255,255,0.20);
-      border-radius: 32px;
-      padding: 20px;
-      backdrop-filter: blur(13px);
-      box-shadow: 0 28px 70px rgba(0,0,0,0.34);
-    }
-
-    .tag {
+    .hero-kicker {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       padding: 10px 14px;
-      background: rgba(255,255,255,0.17);
-      border: 1px solid rgba(255,255,255,0.24);
+      background: rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.26);
       border-radius: 999px;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       font-weight: 900;
       margin-bottom: 18px;
       backdrop-filter: blur(14px);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.14);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.10);
     }
 
-    h1 {
-      font-size: clamp(2.75rem, 13vw, 7rem);
-      line-height: 0.88;
-      letter-spacing: -3px;
+    .main-title {
+      font-size: clamp(4.5rem, 24vw, 10rem);
+      line-height: 0.78;
+      letter-spacing: -7px;
       text-transform: uppercase;
       margin-bottom: 18px;
-      text-shadow: 0 18px 44px rgba(0,0,0,0.38);
+      color: white;
+      text-shadow:
+        0 16px 40px rgba(0,0,0,0.25),
+        0 0 30px rgba(255,255,255,0.20);
     }
 
-    h1 span {
+    .main-title span {
       display: block;
       color: var(--yellow);
-      text-shadow:
-        0 0 28px rgba(255,230,109,0.35),
-        0 18px 44px rgba(0,0,0,0.30);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(2.2rem, 12vw, 5rem);
+      line-height: 0.92;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: #06314a;
+      text-shadow: 0 8px 24px rgba(255,255,255,0.18);
+    }
+
+    .hero-subtitle span {
+      display: block;
+      color: white;
+      text-shadow: 0 16px 40px rgba(0,0,0,0.20);
     }
 
     .hero p {
-      font-size: 1rem;
-      line-height: 1.55;
-      color: #e8faff;
-      max-width: 640px;
-      margin-bottom: 22px;
-      font-weight: 560;
-      text-shadow: 0 10px 24px rgba(0,0,0,0.42);
+      font-size: 1.08rem;
+      line-height: 1.62;
+      color: #eaffff;
+      max-width: 650px;
+      margin-bottom: 26px;
+      font-weight: 580;
+      text-shadow: 0 10px 24px rgba(0,0,0,0.25);
+    }
+
+    .hero-card {
+      padding: 22px;
+      border-radius: 34px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.20), rgba(255,255,255,0.08));
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(13px);
+      box-shadow: 0 28px 70px rgba(0,0,0,0.18);
     }
 
     .buttons {
@@ -458,7 +409,7 @@
       font-size: 0.98rem;
       font-weight: 950;
       text-align: center;
-      box-shadow: 0 18px 34px rgba(0,0,0,0.24);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.20);
       cursor: pointer;
       transition: 0.25s ease;
       display: inline-flex;
@@ -566,7 +517,8 @@
     }
 
     .about {
-      background: #061d2c;
+      background:
+        linear-gradient(180deg, rgba(7,149,193,0.12), rgba(6,29,44,0.96) 20%, #061d2c 100%);
     }
 
     .about-grid {
@@ -682,12 +634,12 @@
 
     .photo-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .photo {
-      min-height: 192px;
+      min-height: 210px;
       border-radius: 30px;
       overflow: hidden;
       position: relative;
@@ -698,9 +650,8 @@
       transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .photo.big {
-      grid-column: span 2;
-      min-height: 330px;
+    .photo.main-photo {
+      min-height: 520px;
       background-image: url("il_locale.png");
       background-position: center center;
     }
@@ -930,12 +881,8 @@
     }
 
     @media (min-width: 760px) {
-      .hero-content {
-        padding-bottom: 60px;
-      }
-
-      .hero-panel {
-        max-width: 680px;
+      .hero-card {
+        max-width: 690px;
         padding: 30px;
       }
 
@@ -963,8 +910,9 @@
         grid-template-columns: repeat(4, 1fr);
       }
 
-      .photo.big {
-        grid-column: span 2;
+      .photo.main-photo {
+        grid-column: span 4;
+        min-height: 620px;
       }
 
       form {
@@ -984,28 +932,20 @@
 
     @media (max-width: 430px) {
       .hero {
-        padding-top: 78px;
+        padding-left: 14px;
+        padding-right: 14px;
       }
 
-      .hero-image-wrap {
-        min-height: calc(100svh - 78px);
+      .hero-card {
+        padding: 19px;
       }
 
-      .hero-image {
-        object-position: center center;
+      .main-title {
+        letter-spacing: -5px;
       }
 
-      .hero-content {
-        padding: 0 14px 30px;
-      }
-
-      .hero-panel {
-        padding: 18px;
-        border-radius: 28px;
-      }
-
-      h1 {
-        letter-spacing: -2.5px;
+      .hero-subtitle {
+        letter-spacing: -2px;
       }
 
       .nav-links {
@@ -1019,6 +959,11 @@
 
       .brand span {
         font-size: 0.9rem;
+      }
+
+      .photo.main-photo {
+        min-height: 560px;
+        background-position: center center;
       }
 
       .event-card {
@@ -1037,13 +982,12 @@
         display: none;
       }
 
-      h1 {
-        font-size: 2.75rem;
+      .main-title {
+        font-size: 4rem;
       }
 
-      .tag {
-        font-size: 0.72rem;
-        padding: 9px 12px;
+      .hero-subtitle {
+        font-size: 2.05rem;
       }
     }
   </style>
@@ -1070,7 +1014,12 @@
       <div class="bubble"></div>
     </div>
 
-    <div class="water-lines"></div>
+    <div class="wave-lines"></div>
+
+    <div class="sea-creature crab">🦀</div>
+    <div class="sea-creature fish">🐠</div>
+    <div class="sea-creature shell">🐚</div>
+    <div class="sea-creature starfish">⭐</div>
 
     <header>
       <nav class="nav">
@@ -1090,36 +1039,37 @@
     <main>
 
       <section class="hero">
-        <div class="hero-image-wrap">
-          <img class="hero-image" src="il_locale.png" alt="Il Muretto al tramonto">
+        <div class="hero-content reveal">
+          <div class="hero-kicker">🌊 Lago · Estate · Drink · Musica</div>
 
-          <div class="hero-content reveal">
-            <div class="hero-panel">
-              <div class="tag">🍹 Lago · Aperitivi · Feste · Estate</div>
+          <h1 class="main-title">
+            Il
+            <span>Muretto</span>
+          </h1>
 
-              <h1>
-                Il tuo
-                <span>aperitivo</span>
-              </h1>
+          <div class="hero-card">
+            <h2 class="hero-subtitle">
+              Il tuo
+              <span>aperitivo</span>
+            </h2>
 
-              <p>
-                Aperitivi, feste private, serate tra amici ed eventi speciali.
-                Il Muretto è il posto in cui la giornata rallenta, il locale si accende
-                e ogni tavolo diventa il centro della serata.
-              </p>
+            <p>
+              Aperitivi, feste private, serate tra amici ed eventi speciali.
+              Il Muretto è il posto in cui la giornata rallenta, il locale si accende
+              e ogni tavolo diventa il centro della serata.
+            </p>
 
-              <div class="buttons">
-                <a class="btn btn-primary" href="#prenota">Prenota il tuo tavolo</a>
+            <div class="buttons">
+              <a class="btn btn-primary" href="#prenota">Prenota il tuo tavolo</a>
 
-                <a class="btn btn-instagram" href="https://www.instagram.com/ilmurettomontefiasconelago?igsh=MTNqZHh4NXlhanZ1MA==" target="_blank">
-                  <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                    <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="2"/>
-                    <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/>
-                    <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
-                  </svg>
-                  <span>Seguici su Instagram</span>
-                </a>
-              </div>
+              <a class="btn btn-instagram" href="https://www.instagram.com/ilmurettomontefiasconelago?igsh=MTNqZHh4NXlhanZ1MA==" target="_blank">
+                <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="2"/>
+                  <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/>
+                  <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+                </svg>
+                <span>Seguici su Instagram</span>
+              </a>
             </div>
           </div>
         </div>
@@ -1219,16 +1169,16 @@
         <div class="container">
           <div class="section-title reveal">
             <small>Gallery</small>
-            <h2>Momenti da vivere.</h2>
+            <h2>Il locale al tramonto.</h2>
             <p>
-              Qui potrai inserire le foto vere del locale, dei tavoli, degli aperitivi
-              e degli eventi. Il sito è già pronto per diventare una piccola vetrina fotografica.
+              Qui puoi valorizzare le foto vere del locale, degli aperitivi,
+              dei tavoli e degli eventi.
             </p>
           </div>
 
           <div class="photo-grid">
-            <div class="photo big reveal">
-              <span>Il locale</span>
+            <div class="photo main-photo reveal">
+              <span>Il Muretto</span>
             </div>
 
             <div class="photo reveal" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');">
@@ -1266,7 +1216,6 @@
           </div>
 
           <div class="event-list">
-
             <div class="event-card reveal">
               <div class="date-box">
                 <b>14</b>
@@ -1305,7 +1254,6 @@
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -1328,7 +1276,6 @@
             </p>
 
             <form id="bookingForm">
-
               <div class="field">
                 <label for="nome">Nome</label>
                 <input type="text" id="nome" placeholder="Es. Marco Rossi" required>
@@ -1472,16 +1419,16 @@
 
     window.addEventListener("scroll", function() {
       const scrollY = window.scrollY;
-      const water = document.querySelector(".water-lines");
-      const heroImage = document.querySelector(".hero-image");
+      const wave = document.querySelector(".wave-lines");
+      const creatures = document.querySelectorAll(".sea-creature");
 
-      if (water) {
-        water.style.transform = "translateY(" + scrollY * 0.05 + "px) skewY(-2deg)";
+      if (wave) {
+        wave.style.transform = "translateY(" + scrollY * 0.05 + "px) skewY(-2deg)";
       }
 
-      if (heroImage) {
-        heroImage.style.marginTop = scrollY * 0.08 + "px";
-      }
+      creatures.forEach(function(creature, index) {
+        creature.style.marginTop = scrollY * (0.015 + index * 0.004) + "px";
+      });
     });
   </script>
 
