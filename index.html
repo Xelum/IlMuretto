@@ -85,6 +85,52 @@
         linear-gradient(180deg, rgba(84,220,255,0.38), rgba(2,15,24,0.62));
     }
 
+    .privacy-mini-banner {
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 300;
+      display: none;
+      gap: 12px;
+      align-items: center;
+      padding: 14px;
+      border-radius: 22px;
+      background: rgba(2, 15, 24, 0.90);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .privacy-mini-banner.show {
+      display: flex;
+    }
+
+    .privacy-mini-banner p {
+      color: #eaffff;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      flex: 1;
+    }
+
+    .privacy-mini-banner a {
+      color: #ffe66d;
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
+    .privacy-mini-banner button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 13px;
+      background: #ffffff;
+      color: #007fa6;
+      font-size: 0.78rem;
+      font-weight: 950;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
     .bubble-field {
       position: fixed;
       inset: 0;
@@ -889,6 +935,31 @@
       margin-top: 10px;
     }
 
+    .privacy-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #cdefff;
+      margin-top: 4px;
+    }
+
+    .privacy-check input {
+      width: 18px;
+      height: 18px;
+      min-width: 18px;
+      margin-top: 2px;
+      flex-shrink: 0;
+      accent-color: #ffe66d;
+    }
+
+    .privacy-check a {
+      color: #ffe66d;
+      font-weight: 900;
+      text-decoration: underline;
+    }
+
     .contact-strip {
       display: grid;
       gap: 12px;
@@ -921,6 +992,12 @@
       color: #bdefff;
       position: relative;
       z-index: 3;
+    }
+
+    footer a {
+      color: #ffe66d;
+      font-weight: 900;
+      text-decoration: underline;
     }
 
     .menu-modal {
@@ -1010,7 +1087,8 @@
 
       .field.full,
       form button,
-      .form-note {
+      .form-note,
+      .privacy-check {
         grid-column: span 2;
       }
 
@@ -1056,6 +1134,10 @@
         width: 68px;
         height: 68px;
       }
+
+      .privacy-mini-banner {
+        align-items: flex-start;
+      }
     }
 
     @media (max-width: 360px) {
@@ -1067,6 +1149,14 @@
       .hero-subtitle {
         font-size: 2.05rem;
       }
+
+      .privacy-mini-banner {
+        flex-direction: column;
+      }
+
+      .privacy-mini-banner button {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -1074,6 +1164,14 @@
 <body>
 
   <div class="page">
+
+    <div class="privacy-mini-banner" id="privacyMiniBanner">
+      <p>
+        Questo sito non usa cookie di profilazione. I dati inseriti nel modulo vengono usati solo per gestire la richiesta di prenotazione.
+        <a href="privacy.html" target="_blank">Privacy Policy</a>
+      </p>
+      <button type="button" id="privacyOk">Ho capito</button>
+    </div>
 
     <div class="ambient"></div>
 
@@ -1391,6 +1489,15 @@
                 <textarea id="note" placeholder="Torta, musica, tavolo, bottiglie, allergie o altre richieste..."></textarea>
               </div>
 
+              <label class="privacy-check">
+                <input type="checkbox" id="privacy" required>
+                <span>
+                  Ho letto e accetto la
+                  <a href="privacy.html" target="_blank">Privacy Policy</a>
+                  per l’invio della richiesta di prenotazione.
+                </span>
+              </label>
+
               <button type="submit" class="btn btn-primary">
                 Invia richiesta su WhatsApp
               </button>
@@ -1429,6 +1536,8 @@
       <br>
       Aperitivi · Feste · Eventi sul Lago
       <br><br>
+      <a href="privacy.html">Privacy Policy</a>
+      <br><br>
       © 2026 Il Muretto. Tutti i diritti riservati.
     </footer>
 
@@ -1446,6 +1555,13 @@
 
     form.addEventListener("submit", function(event) {
       event.preventDefault();
+
+      const privacy = document.getElementById("privacy");
+
+      if (!privacy.checked) {
+        alert("Per inviare la richiesta devi accettare la Privacy Policy.");
+        return;
+      }
 
       const nome = document.getElementById("nome").value;
       const telefono = document.getElementById("telefono").value;
@@ -1466,6 +1582,7 @@
         "Persone: " + persone + "%0A" +
         "Tipo prenotazione: " + tipo + "%0A" +
         "Note: " + note + "%0A%0A" +
+        "Ho letto e accettato la Privacy Policy.%0A%0A" +
         "Attendo conferma, grazie!";
 
       const url = "https://wa.me/" + numeroWhatsApp + "?text=" + messaggio;
@@ -1539,6 +1656,22 @@
         closeMenuModal();
       }
     });
+
+    const privacyMiniBanner = document.getElementById("privacyMiniBanner");
+    const privacyOk = document.getElementById("privacyOk");
+
+    if (privacyMiniBanner && privacyOk) {
+      const privacyAccepted = localStorage.getItem("privacyMiniBannerAccepted");
+
+      if (!privacyAccepted) {
+        privacyMiniBanner.classList.add("show");
+      }
+
+      privacyOk.addEventListener("click", function() {
+        localStorage.setItem("privacyMiniBannerAccepted", "true");
+        privacyMiniBanner.classList.remove("show");
+      });
+    }
   </script>
 
 </body>
