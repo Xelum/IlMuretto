@@ -4,23 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Il Muretto | Aperitivi, Feste ed Eventi</title>
+  <title>Il Muretto | Aperitivi, Feste ed Eventi sul Lago</title>
 
   <style>
     :root {
-      --blue: #00a9d6;
-      --blue-light: #31d7ff;
-      --blue-dark: #006f94;
-      --night: #061522;
+      --sky: #39d5ff;
+      --cyan: #00a9d6;
+      --blue: #007fa6;
+      --deep: #04131f;
+      --deep-2: #061d2c;
       --white: #ffffff;
       --cream: #fff7d6;
-      --yellow: #fff176;
-      --orange: #ffb347;
-      --pink: #ff5fa2;
+      --yellow: #ffe66d;
+      --orange: #ff9f43;
+      --pink: #ff4f9a;
       --green: #25d366;
-      --text: #f5fbff;
-      --muted: #d7f5ff;
-      --glass: rgba(255, 255, 255, 0.14);
+      --muted: #cdefff;
+      --glass: rgba(255,255,255,0.13);
+      --glass-border: rgba(255,255,255,0.18);
     }
 
     * {
@@ -35,7 +36,7 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: var(--night);
+      background: var(--deep);
       color: var(--white);
       overflow-x: hidden;
     }
@@ -53,150 +54,163 @@
     .page {
       width: 100%;
       min-height: 100vh;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(255,255,255,0.25), transparent 24%),
-        radial-gradient(circle at 90% 20%, rgba(255,241,118,0.20), transparent 20%),
-        linear-gradient(180deg, #24c7ee 0%, #0299c9 42%, #06314a 100%);
-      position: relative;
       overflow: hidden;
+      background: var(--deep);
     }
 
-    .summer-bg {
+    .ambient {
       position: fixed;
       inset: 0;
       pointer-events: none;
       z-index: 0;
-      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255,230,109,0.20), transparent 18%),
+        radial-gradient(circle at 15% 25%, rgba(255,79,154,0.18), transparent 24%),
+        radial-gradient(circle at 88% 18%, rgba(0,217,255,0.20), transparent 24%),
+        linear-gradient(180deg, #0fb8e3 0%, #028ebd 36%, #06314a 68%, #020f18 100%);
     }
 
-    .sun {
-      position: absolute;
-      top: 98px;
-      right: 24px;
-      width: 86px;
-      height: 86px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #fff8b0, #ffd15c 62%, rgba(255,177,71,0.35));
-      box-shadow: 0 0 45px rgba(255, 241, 118, 0.75);
-      animation: sunPulse 3s ease-in-out infinite;
-    }
-
-    .sun::before {
+    .ambient::before {
       content: "";
       position: absolute;
-      inset: -16px;
-      border-radius: 50%;
-      border: 2px dashed rgba(255,255,255,0.42);
-      animation: rotateSun 16s linear infinite;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.50), transparent 70%);
+      opacity: 0.45;
     }
 
-    .bubble {
+    .sunset-orb {
+      position: fixed;
+      top: 98px;
+      right: 22px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 38% 34%, #fffce1 0 13%, #fff19b 14% 32%, #ffb65c 52%, rgba(255,159,67,0.26) 72%, transparent 74%);
+      filter: blur(0.2px);
+      box-shadow:
+        0 0 40px rgba(255,230,109,0.52),
+        0 0 95px rgba(255,111,97,0.32);
+      opacity: 0.82;
+      animation: sunsetFloat 6s ease-in-out infinite;
+    }
+
+    .sunset-orb::before,
+    .sunset-orb::after {
+      content: "";
       position: absolute;
-      bottom: -80px;
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.22);
-      border: 1px solid rgba(255,255,255,0.35);
-      animation: bubbleUp 9s linear infinite;
+      left: -18px;
+      right: -18px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.32);
+      filter: blur(1px);
     }
 
-    .bubble:nth-child(2) {
-      left: 9%;
-      width: 20px;
-      height: 20px;
+    .sunset-orb::before {
+      top: 52px;
+    }
+
+    .sunset-orb::after {
+      top: 82px;
+      left: 12px;
+      right: 12px;
+      opacity: 0.55;
+    }
+
+    .water-lines {
+      position: fixed;
+      left: -20%;
+      right: -20%;
+      top: 305px;
+      height: 280px;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.35;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          rgba(255,255,255,0.14) 0,
+          rgba(255,255,255,0.14) 2px,
+          transparent 3px,
+          transparent 22px
+        );
+      transform: skewY(-2deg);
+      mask-image: linear-gradient(to bottom, transparent, black 18%, transparent 90%);
+      animation: waterDrift 7s ease-in-out infinite alternate;
+    }
+
+    .floating-light {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.52);
+      z-index: 1;
+      pointer-events: none;
+      filter: blur(1px);
+      animation: lightRise 10s linear infinite;
+    }
+
+    .floating-light.one {
+      left: 12%;
+      bottom: -20px;
       animation-delay: 0s;
     }
 
-    .bubble:nth-child(3) {
-      left: 28%;
-      width: 13px;
-      height: 13px;
-      animation-delay: 2s;
-      animation-duration: 11s;
-    }
-
-    .bubble:nth-child(4) {
-      left: 58%;
-      width: 26px;
-      height: 26px;
-      animation-delay: 4s;
+    .floating-light.two {
+      left: 42%;
+      bottom: -40px;
+      width: 16px;
+      height: 16px;
+      animation-delay: 3s;
       animation-duration: 13s;
     }
 
-    .bubble:nth-child(5) {
-      left: 78%;
-      width: 15px;
-      height: 15px;
-      animation-delay: 1s;
-      animation-duration: 10s;
-    }
-
-    .bubble:nth-child(6) {
-      left: 91%;
-      width: 22px;
-      height: 22px;
+    .floating-light.three {
+      left: 76%;
+      bottom: -30px;
+      width: 12px;
+      height: 12px;
       animation-delay: 5s;
-      animation-duration: 12s;
+      animation-duration: 11s;
     }
 
-    .wave {
-      position: absolute;
-      left: -10%;
-      right: -10%;
-      bottom: 0;
-      height: 120px;
-      background:
-        radial-gradient(ellipse at 20% 0%, rgba(255,255,255,0.32) 0 22%, transparent 23%),
-        radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.28) 0 22%, transparent 23%),
-        radial-gradient(ellipse at 80% 0%, rgba(255,255,255,0.32) 0 22%, transparent 23%);
-      opacity: 0.55;
-      animation: waveMove 5s ease-in-out infinite alternate;
-    }
-
-    @keyframes sunPulse {
+    @keyframes sunsetFloat {
       0%, 100% {
-        transform: scale(1);
+        transform: translateY(0) scale(1);
       }
-
       50% {
-        transform: scale(1.08);
+        transform: translateY(10px) scale(1.04);
       }
     }
 
-    @keyframes rotateSun {
+    @keyframes waterDrift {
       from {
-        transform: rotate(0deg);
+        transform: translateX(-22px) skewY(-2deg);
       }
-
       to {
-        transform: rotate(360deg);
+        transform: translateX(22px) skewY(-2deg);
       }
     }
 
-    @keyframes bubbleUp {
+    @keyframes lightRise {
       0% {
         transform: translateY(0) translateX(0);
         opacity: 0;
       }
-
-      15% {
-        opacity: 1;
+      20% {
+        opacity: 0.8;
       }
-
       100% {
-        transform: translateY(-110vh) translateX(22px);
+        transform: translateY(-110vh) translateX(24px);
         opacity: 0;
-      }
-    }
-
-    @keyframes waveMove {
-      from {
-        transform: translateX(-18px);
-      }
-
-      to {
-        transform: translateX(18px);
       }
     }
 
@@ -204,15 +218,15 @@
       position: fixed;
       top: 0;
       width: 100%;
-      z-index: 20;
+      z-index: 50;
       padding: 12px 14px;
-      background: rgba(2, 34, 55, 0.48);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255,255,255,0.14);
+      background: rgba(2, 18, 31, 0.42);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
     }
 
     .nav {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: auto;
       display: flex;
       align-items: center;
@@ -225,7 +239,6 @@
       align-items: center;
       gap: 9px;
       font-weight: 950;
-      letter-spacing: 0.3px;
       min-width: 0;
     }
 
@@ -237,6 +250,7 @@
       background: white;
       padding: 2px;
       flex-shrink: 0;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.24);
     }
 
     .brand span {
@@ -247,120 +261,152 @@
     .nav-links {
       display: flex;
       gap: 7px;
-      font-size: 0.72rem;
-      font-weight: 850;
+      font-size: 0.70rem;
+      font-weight: 900;
       text-transform: uppercase;
     }
 
     .nav-links a {
       padding: 8px 8px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.11);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .hero,
-    section,
+    main,
     footer {
       position: relative;
-      z-index: 2;
+      z-index: 3;
     }
 
     .hero {
+      position: relative;
       min-height: 100vh;
-      padding: 108px 18px 50px;
+      padding: 108px 18px 64px;
       display: flex;
       align-items: center;
       overflow: hidden;
     }
 
     .hero::before {
-      content: "🌴";
+      content: "";
       position: absolute;
-      left: -24px;
-      top: 135px;
-      font-size: 7rem;
-      opacity: 0.28;
-      transform: rotate(-18deg);
+      inset: auto -20% -70px -20%;
+      height: 260px;
+      background:
+        radial-gradient(ellipse at center, rgba(255,255,255,0.24), transparent 55%),
+        linear-gradient(180deg, rgba(255,255,255,0.00), rgba(255,255,255,0.12));
+      filter: blur(14px);
+      opacity: 0.70;
+      animation: shimmer 5s ease-in-out infinite alternate;
     }
 
     .hero::after {
-      content: "🍹";
+      content: "🌴";
       position: absolute;
-      right: 14px;
-      bottom: 95px;
-      font-size: 4.2rem;
-      opacity: 0.34;
-      transform: rotate(10deg);
+      left: -22px;
+      top: 140px;
+      font-size: 7.5rem;
+      opacity: 0.25;
+      transform: rotate(-18deg);
+      filter: drop-shadow(0 20px 30px rgba(0,0,0,0.28));
+    }
+
+    @keyframes shimmer {
+      from {
+        transform: translateX(-20px);
+      }
+      to {
+        transform: translateX(20px);
+      }
     }
 
     .hero-content {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1120px;
       margin: auto;
+      position: relative;
+      z-index: 4;
     }
 
     .logo-card {
-      width: 170px;
-      height: 170px;
-      border-radius: 36px;
+      width: 174px;
+      height: 174px;
+      border-radius: 38px;
       padding: 10px;
-      background: rgba(255,255,255,0.18);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.30), rgba(255,255,255,0.08));
       backdrop-filter: blur(18px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.24);
-      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.28),
+        inset 0 0 0 1px rgba(255,255,255,0.18);
       margin-bottom: 24px;
-      transform: rotate(-3deg);
+      transform: rotate(-4deg);
+      animation: logoFloat 4.5s ease-in-out infinite;
     }
 
     .logo-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 28px;
+      border-radius: 29px;
+    }
+
+    @keyframes logoFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-4deg);
+      }
+      50% {
+        transform: translateY(-8px) rotate(-2deg);
+      }
     }
 
     .tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 9px 14px;
+      padding: 10px 14px;
       background: rgba(255,255,255,0.17);
       border: 1px solid rgba(255,255,255,0.24);
       border-radius: 999px;
       font-size: 0.82rem;
-      font-weight: 850;
+      font-weight: 900;
       margin-bottom: 18px;
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.14);
     }
 
     h1 {
-      font-size: clamp(3rem, 14vw, 6rem);
-      line-height: 0.9;
-      letter-spacing: -3px;
+      font-size: clamp(3.35rem, 15vw, 7rem);
+      line-height: 0.86;
+      letter-spacing: -4px;
       text-transform: uppercase;
-      margin-bottom: 18px;
-      text-shadow: 0 16px 40px rgba(0,0,0,0.24);
+      margin-bottom: 20px;
+      text-shadow: 0 18px 44px rgba(0,0,0,0.26);
     }
 
     h1 span {
       display: block;
       color: var(--yellow);
+      text-shadow:
+        0 0 28px rgba(255,230,109,0.30),
+        0 18px 44px rgba(0,0,0,0.22);
     }
 
     .hero p {
       font-size: 1.08rem;
-      line-height: 1.6;
+      line-height: 1.65;
       color: var(--muted);
-      max-width: 620px;
+      max-width: 640px;
       margin-bottom: 28px;
-      font-weight: 500;
+      font-weight: 530;
     }
 
     .buttons {
       display: grid;
       grid-template-columns: 1fr;
       gap: 12px;
-      max-width: 460px;
+      max-width: 470px;
     }
 
     .btn {
@@ -382,7 +428,7 @@
 
     .btn-primary {
       background: var(--white);
-      color: var(--blue-dark);
+      color: var(--blue);
     }
 
     .btn-secondary {
@@ -396,17 +442,62 @@
       transform: translateY(-3px);
     }
 
+    .scroll-cue {
+      margin-top: 34px;
+      width: fit-content;
+      color: rgba(255,255,255,0.86);
+      font-size: 0.82rem;
+      font-weight: 850;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      opacity: 0.95;
+    }
+
+    .mouse {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255,255,255,0.65);
+      border-radius: 999px;
+      position: relative;
+    }
+
+    .mouse::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      width: 4px;
+      height: 8px;
+      border-radius: 999px;
+      background: white;
+      transform: translateX(-50%);
+      animation: wheel 1.6s ease-in-out infinite;
+    }
+
+    @keyframes wheel {
+      0% {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, 12px);
+        opacity: 0;
+      }
+    }
+
     section {
-      padding: 70px 18px;
+      position: relative;
+      padding: 78px 18px;
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1120px;
       margin: auto;
     }
 
     .section-title {
-      margin-bottom: 26px;
+      margin-bottom: 28px;
     }
 
     .section-title small {
@@ -420,14 +511,34 @@
     }
 
     .section-title h2 {
-      font-size: clamp(2rem, 9vw, 4rem);
-      line-height: 0.95;
-      letter-spacing: -2px;
+      font-size: clamp(2.15rem, 9vw, 4.4rem);
+      line-height: 0.94;
+      letter-spacing: -2.4px;
       text-transform: uppercase;
     }
 
+    .section-title p {
+      color: var(--muted);
+      line-height: 1.6;
+      margin-top: 14px;
+      font-size: 1rem;
+      max-width: 650px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .about {
-      background: #061d2c;
+      background:
+        linear-gradient(180deg, rgba(2,15,24,0.40), #061d2c 14%, #061d2c 100%);
     }
 
     .about-grid {
@@ -436,23 +547,45 @@
     }
 
     .glass-card {
-      background: linear-gradient(145deg, rgba(255,255,255,0.15), rgba(255,255,255,0.06));
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.16), rgba(255,255,255,0.06));
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
       padding: 24px;
-      backdrop-filter: blur(16px);
+      backdrop-filter: blur(18px);
       box-shadow: 0 25px 60px rgba(0,0,0,0.18);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background:
+        linear-gradient(120deg, transparent 10%, rgba(255,255,255,0.16) 35%, transparent 60%);
+      transform: translateX(-100%);
+      transition: 0.8s ease;
+      pointer-events: none;
+    }
+
+    .glass-card:hover::before {
+      transform: translateX(100%);
     }
 
     .glass-card h3 {
       font-size: 1.45rem;
       margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
     }
 
     .glass-card p {
       color: #cdefff;
       line-height: 1.65;
       font-size: 1rem;
+      position: relative;
+      z-index: 1;
     }
 
     .features {
@@ -460,6 +593,8 @@
       grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 18px;
+      position: relative;
+      z-index: 1;
     }
 
     .feature {
@@ -481,6 +616,51 @@
       font-size: 0.95rem;
     }
 
+    .experience {
+      background:
+        radial-gradient(circle at 80% 0%, rgba(255,79,154,0.18), transparent 30%),
+        linear-gradient(180deg, #061d2c, #04283d);
+    }
+
+    .experience-track {
+      display: grid;
+      gap: 14px;
+    }
+
+    .moment {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.13);
+    }
+
+    .moment-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(145deg, rgba(255,230,109,0.95), rgba(255,255,255,0.80));
+      color: #06314a;
+      font-size: 1.4rem;
+      box-shadow: 0 14px 26px rgba(0,0,0,0.18);
+    }
+
+    .moment h3 {
+      font-size: 1.15rem;
+      margin-bottom: 6px;
+    }
+
+    .moment p {
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 0.96rem;
+    }
+
     .gallery {
       background:
         radial-gradient(circle at top right, rgba(255,95,162,0.20), transparent 30%),
@@ -494,25 +674,35 @@
     }
 
     .photo {
-      min-height: 190px;
-      border-radius: 28px;
+      min-height: 192px;
+      border-radius: 30px;
       overflow: hidden;
       position: relative;
       background-size: cover;
       background-position: center;
-      box-shadow: 0 18px 35px rgba(0,0,0,0.22);
+      box-shadow: 0 18px 35px rgba(0,0,0,0.24);
+      transform: translateZ(0);
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
     .photo.big {
       grid-column: span 2;
-      min-height: 260px;
+      min-height: 280px;
     }
 
-    .photo::after {
+    .photo:hover {
+      transform: scale(1.02);
+      box-shadow: 0 28px 55px rgba(0,0,0,0.32);
+    }
+
+    .photo::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent, rgba(0,0,0,0.48));
+      background:
+        linear-gradient(180deg, transparent 30%, rgba(0,0,0,0.54)),
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 38%);
+      z-index: 1;
     }
 
     .photo span {
@@ -525,7 +715,8 @@
     }
 
     .events {
-      background: #061d2c;
+      background:
+        linear-gradient(180deg, #04283d, #061d2c);
     }
 
     .event-list {
@@ -538,9 +729,24 @@
       grid-template-columns: 78px 1fr;
       gap: 15px;
       padding: 18px;
-      border-radius: 28px;
-      background: rgba(255,255,255,0.10);
-      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.06));
+      border: 1px solid rgba(255,255,255,0.15);
+      box-shadow: 0 22px 42px rgba(0,0,0,0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      right: -30px;
+      top: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255,230,109,0.13);
     }
 
     .date-box {
@@ -554,6 +760,8 @@
       flex-direction: column;
       font-weight: 950;
       box-shadow: 0 14px 25px rgba(0,0,0,0.18);
+      position: relative;
+      z-index: 1;
     }
 
     .date-box b {
@@ -564,6 +772,11 @@
     .date-box span {
       font-size: 0.78rem;
       text-transform: uppercase;
+    }
+
+    .event-info {
+      position: relative;
+      z-index: 1;
     }
 
     .event-info h3 {
@@ -579,22 +792,10 @@
 
     .booking {
       background:
-        radial-gradient(circle at top left, rgba(255,241,118,0.10), transparent 28%),
-        linear-gradient(180deg, #04283d, #020f18);
-      position: relative;
+        radial-gradient(circle at top left, rgba(255,241,118,0.12), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(0,217,255,0.18), transparent 36%),
+        linear-gradient(180deg, #061d2c, #020f18);
       overflow: hidden;
-    }
-
-    .booking::before {
-      content: "";
-      position: absolute;
-      width: 320px;
-      height: 320px;
-      background: rgba(0,169,214,0.30);
-      border-radius: 50%;
-      filter: blur(40px);
-      right: -150px;
-      top: 120px;
     }
 
     form {
@@ -616,7 +817,7 @@
       display: block;
       margin-bottom: 8px;
       font-size: 0.88rem;
-      font-weight: 850;
+      font-weight: 900;
       color: #fff7d6;
     }
 
@@ -636,6 +837,14 @@
       backdrop-filter: blur(14px);
       appearance: none;
       -webkit-appearance: none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(255,230,109,0.65);
+      box-shadow: 0 0 0 4px rgba(255,230,109,0.10);
     }
 
     input[type="date"],
@@ -682,12 +891,18 @@
       border-radius: 22px;
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0.12);
-      font-weight: 850;
+      font-weight: 900;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
       text-align: center;
+      transition: 0.25s ease;
+    }
+
+    .contact-pill:hover {
+      transform: translateY(-3px);
+      background: rgba(255,255,255,0.15);
     }
 
     .instagram-icon {
@@ -709,7 +924,7 @@
       left: 10px;
       right: 10px;
       bottom: 10px;
-      z-index: 30;
+      z-index: 80;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       gap: 8px;
@@ -735,38 +950,12 @@
 
     .call {
       background: var(--white);
-      color: var(--blue-dark);
-    }
-
-    .insta {
-      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
-      color: white;
+      color: var(--blue);
     }
 
     .map {
       background: linear-gradient(135deg, #fff176, #ffb347);
       color: #06314a;
-    }
-
-    .floating-badge {
-      margin-top: 24px;
-      display: inline-block;
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.14);
-      border: 1px solid rgba(255,255,255,0.18);
-      font-weight: 850;
-      animation: float 2.8s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-8px);
-      }
     }
 
     @media (min-width: 760px) {
@@ -780,6 +969,14 @@
 
       .features {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      .experience-track {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .moment {
+        grid-template-columns: 1fr;
       }
 
       .photo-grid {
@@ -812,18 +1009,18 @@
         padding-bottom: 32px;
       }
 
-      .sun {
-        top: 120px;
+      .sunset-orb {
+        top: 110px;
         right: 10%;
-        width: 120px;
-        height: 120px;
+        width: 190px;
+        height: 190px;
       }
     }
 
     @media (max-width: 390px) {
       .nav-links {
         gap: 5px;
-        font-size: 0.66rem;
+        font-size: 0.64rem;
       }
 
       .nav-links a {
@@ -839,6 +1036,10 @@
         height: 150px;
       }
 
+      h1 {
+        letter-spacing: -3px;
+      }
+
       .event-card {
         grid-template-columns: 68px 1fr;
         padding: 15px;
@@ -848,6 +1049,14 @@
         width: 68px;
         height: 68px;
       }
+
+      .sunset-orb {
+        width: 112px;
+        height: 112px;
+        top: 104px;
+        right: 12px;
+        opacity: 0.72;
+      }
     }
   </style>
 </head>
@@ -856,15 +1065,12 @@
 
   <div class="page">
 
-    <div class="summer-bg">
-      <div class="sun"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="bubble"></div>
-      <div class="wave"></div>
-    </div>
+    <div class="ambient"></div>
+    <div class="sunset-orb"></div>
+    <div class="water-lines"></div>
+    <div class="floating-light one"></div>
+    <div class="floating-light two"></div>
+    <div class="floating-light three"></div>
 
     <header>
       <nav class="nav">
@@ -884,22 +1090,22 @@
     <main>
 
       <section class="hero">
-        <div class="hero-content">
+        <div class="hero-content reveal">
           <div class="logo-card">
             <img src="logo.jpg" alt="Il Muretto">
           </div>
 
-          <div class="tag">🌴 Aperitivi · Feste · Musica · Estate</div>
+          <div class="tag">🌅 Lago · Aperitivi · Feste · Estate</div>
 
           <h1>
-            Il tuo posto
-            <span>sul lago</span>
+            Il tuo
+            <span>tramonto</span>
           </h1>
 
           <p>
-            Il Muretto è il locale perfetto per vivere aperitivi, serate tra amici,
-            feste private ed eventi speciali in un’atmosfera fresca, giovane e rilassata.
-            Scegli il giorno, invita chi vuoi e prenota il tuo tavolo.
+            Aperitivi, feste private, serate tra amici ed eventi speciali.
+            Il Muretto è il posto in cui la giornata rallenta, il lago si accende
+            e ogni tavolo diventa il centro della serata.
           </p>
 
           <div class="buttons">
@@ -907,27 +1113,31 @@
             <a class="btn btn-secondary" href="#eventi">Scopri gli eventi</a>
           </div>
 
-          <div class="floating-badge">
-            ✨ Nuove serate in arrivo ogni settimana
+          <div class="scroll-cue">
+            <div class="mouse"></div>
+            <span>Scorri e scopri il locale</span>
           </div>
         </div>
       </section>
 
       <section class="about" id="locale">
         <div class="container">
-          <div class="section-title">
+          <div class="section-title reveal">
             <small>Il locale</small>
-            <h2>Estate, amici e tramonti.</h2>
+            <h2>Estate, amici e vista lago.</h2>
+            <p>
+              Un’atmosfera fresca, giovane e rilassata: perfetta per un aperitivo,
+              una festa o una serata da vivere senza pensieri.
+            </p>
           </div>
 
           <div class="about-grid">
-            <div class="glass-card">
+            <div class="glass-card reveal">
               <h3>Benvenuto al Muretto</h3>
               <p>
-                Un posto pensato per chi vuole staccare, bere qualcosa di buono,
-                condividere un aperitivo e godersi la serata senza pensieri.
-                Qui ogni tavolo può diventare il punto di partenza di una festa,
-                di un compleanno, di un brindisi o di una serata improvvisata con gli amici.
+                Qui ogni serata ha il sapore dell’estate: drink, musica, amici,
+                brindisi e tavoli pronti per compleanni, lauree, feste private
+                o semplicemente per un aperitivo improvvisato.
               </p>
 
               <div class="features">
@@ -948,7 +1158,7 @@
               </div>
             </div>
 
-            <div class="glass-card">
+            <div class="glass-card reveal">
               <h3>Perché prenotare?</h3>
               <p>
                 Con la prenotazione possiamo organizzare al meglio il tuo tavolo,
@@ -965,52 +1175,94 @@
         </div>
       </section>
 
+      <section class="experience">
+        <div class="container">
+          <div class="section-title reveal">
+            <small>Vivi la serata</small>
+            <h2>Dal primo drink all’ultimo brindisi.</h2>
+          </div>
+
+          <div class="experience-track">
+            <div class="moment reveal">
+              <div class="moment-icon">🌅</div>
+              <div>
+                <h3>Arrivi al tramonto</h3>
+                <p>La luce cala, il lago si colora e il tavolo è già pronto per te.</p>
+              </div>
+            </div>
+
+            <div class="moment reveal">
+              <div class="moment-icon">🍸</div>
+              <div>
+                <h3>Ordini, brindisi e relax</h3>
+                <p>Drink freschi, aperitivo e il mood giusto per iniziare la serata.</p>
+              </div>
+            </div>
+
+            <div class="moment reveal">
+              <div class="moment-icon">🎶</div>
+              <div>
+                <h3>La serata prende vita</h3>
+                <p>Musica, amici, foto e quell’atmosfera che fa venire voglia di restare.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="gallery" id="foto">
         <div class="container">
-          <div class="section-title">
+          <div class="section-title reveal">
             <small>Gallery</small>
             <h2>Momenti da vivere.</h2>
+            <p>
+              Qui potrai inserire le foto vere del locale, dei tavoli, degli aperitivi
+              e degli eventi. Il sito è già pronto per diventare una piccola vetrina fotografica.
+            </p>
           </div>
 
           <div class="photo-grid">
-            <div class="photo big" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80');">
+            <div class="photo big reveal" style="background-image: url('https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80');">
               <span>Il locale</span>
             </div>
 
-            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');">
+            <div class="photo reveal" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');">
               <span>Aperitivi</span>
             </div>
 
-            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80');">
+            <div class="photo reveal" style="background-image: url('https://images.unsplash.com/photo-1530103862676-de8c9debad1d?auto=format&fit=crop&w=800&q=80');">
               <span>Feste</span>
             </div>
 
-            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80');">
+            <div class="photo reveal" style="background-image: url('https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=800&q=80');">
               <span>Serate</span>
             </div>
 
-            <div class="photo" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80');">
+            <div class="photo reveal" style="background-image: url('https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=800&q=80');">
               <span>Drink</span>
             </div>
           </div>
 
-          <p class="form-note">
-            Puoi sostituire queste immagini con foto reali del locale caricandole nella cartella del sito
-            e cambiando i link dentro il codice.
+          <p class="form-note reveal">
+            Per usare foto reali, caricale nella cartella del sito e sostituisci i link delle immagini.
           </p>
         </div>
       </section>
 
       <section class="events" id="eventi">
         <div class="container">
-          <div class="section-title">
+          <div class="section-title reveal">
             <small>Eventi</small>
             <h2>Le prossime serate.</h2>
+            <p>
+              Questa sezione può essere aggiornata ogni settimana con DJ set, feste,
+              serate speciali, aperitivi al tramonto e appuntamenti del locale.
+            </p>
           </div>
 
           <div class="event-list">
 
-            <div class="event-card">
+            <div class="event-card reveal">
               <div class="date-box">
                 <b>14</b>
                 <span>Giu</span>
@@ -1023,7 +1275,7 @@
               </div>
             </div>
 
-            <div class="event-card">
+            <div class="event-card reveal">
               <div class="date-box">
                 <b>21</b>
                 <span>Giu</span>
@@ -1036,7 +1288,7 @@
               </div>
             </div>
 
-            <div class="event-card">
+            <div class="event-card reveal">
               <div class="date-box">
                 <b>28</b>
                 <span>Giu</span>
@@ -1055,16 +1307,19 @@
 
       <section class="booking" id="prenota">
         <div class="container">
-          <div class="section-title">
+          <div class="section-title reveal">
             <small>Prenotazioni</small>
             <h2>Prenota il tuo tavolo.</h2>
+            <p>
+              Compila il modulo: si aprirà WhatsApp con il messaggio già pronto da inviare al locale.
+            </p>
           </div>
 
-          <div class="glass-card">
+          <div class="glass-card reveal">
             <h3>Festa, aperitivo o serata con gli amici?</h3>
             <p>
-              Compila il modulo: ti aprirà WhatsApp con il messaggio già pronto da inviare al locale.
-              Potrai confermare data, orario, numero di persone e richieste speciali.
+              Inserisci data, orario, numero di persone e richieste speciali.
+              La prenotazione sarà confermata dopo risposta del locale.
             </p>
 
             <form id="bookingForm">
@@ -1129,7 +1384,7 @@
             </form>
           </div>
 
-          <div class="contact-strip">
+          <div class="contact-strip reveal">
             <a class="contact-pill" href="tel:+393515838565">
               📞 Chiama ora
             </a>
@@ -1155,7 +1410,7 @@
     <footer>
       <strong>Il Muretto</strong>
       <br>
-      Aperitivi · Feste · Eventi
+      Aperitivi · Feste · Eventi sul Lago
       <br><br>
       © 2026 Il Muretto. Tutti i diritti riservati.
     </footer>
@@ -1200,6 +1455,37 @@
       const url = "https://wa.me/" + numeroWhatsApp + "?text=" + messaggio;
 
       window.open(url, "_blank");
+    });
+
+    const reveals = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+        }
+      });
+    }, {
+      threshold: 0.16
+    });
+
+    reveals.forEach(function(element) {
+      observer.observe(element);
+    });
+
+    window.addEventListener("scroll", function() {
+      const scrollY = window.scrollY;
+
+      const orb = document.querySelector(".sunset-orb");
+      const water = document.querySelector(".water-lines");
+
+      if (orb) {
+        orb.style.transform = "translateY(" + scrollY * 0.08 + "px)";
+      }
+
+      if (water) {
+        water.style.transform = "translateY(" + scrollY * 0.05 + "px)";
+      }
     });
   </script>
 
