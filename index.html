@@ -64,7 +64,7 @@
       pointer-events: none;
       z-index: 0;
       background:
-        radial-gradient(circle at 50% 12%, rgba(255,230,109,0.20), transparent 18%),
+        radial-gradient(circle at 50% 12%, rgba(255,230,109,0.16), transparent 18%),
         radial-gradient(circle at 15% 25%, rgba(255,79,154,0.18), transparent 24%),
         radial-gradient(circle at 88% 18%, rgba(0,217,255,0.20), transparent 24%),
         linear-gradient(180deg, #0fb8e3 0%, #028ebd 36%, #06314a 68%, #020f18 100%);
@@ -79,60 +79,18 @@
         linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
       background-size: 54px 54px;
       mask-image: linear-gradient(to bottom, rgba(0,0,0,0.50), transparent 70%);
-      opacity: 0.45;
-    }
-
-    .sunset-orb {
-      position: fixed;
-      top: 98px;
-      right: 22px;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      z-index: 1;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 38% 34%, #fffce1 0 13%, #fff19b 14% 32%, #ffb65c 52%, rgba(255,159,67,0.26) 72%, transparent 74%);
-      filter: blur(0.2px);
-      box-shadow:
-        0 0 40px rgba(255,230,109,0.52),
-        0 0 95px rgba(255,111,97,0.32);
-      opacity: 0.82;
-      animation: sunsetFloat 6s ease-in-out infinite;
-    }
-
-    .sunset-orb::before,
-    .sunset-orb::after {
-      content: "";
-      position: absolute;
-      left: -18px;
-      right: -18px;
-      height: 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.32);
-      filter: blur(1px);
-    }
-
-    .sunset-orb::before {
-      top: 52px;
-    }
-
-    .sunset-orb::after {
-      top: 82px;
-      left: 12px;
-      right: 12px;
-      opacity: 0.55;
+      opacity: 0.42;
     }
 
     .water-lines {
       position: fixed;
       left: -20%;
       right: -20%;
-      top: 305px;
+      top: 310px;
       height: 280px;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.34;
       background:
         repeating-linear-gradient(
           180deg,
@@ -182,12 +140,207 @@
       animation-duration: 11s;
     }
 
-    @keyframes sunsetFloat {
+    .drink-scene {
+      position: fixed;
+      top: 100px;
+      right: 18px;
+      width: 132px;
+      height: 170px;
+      z-index: 1;
+      pointer-events: none;
+      animation: drinkFloat 4.8s ease-in-out infinite;
+      filter: drop-shadow(0 24px 38px rgba(0,0,0,0.28));
+    }
+
+    .drink-glass {
+      position: absolute;
+      left: 27px;
+      top: 28px;
+      width: 78px;
+      height: 116px;
+      border-radius: 12px 12px 28px 28px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.30), rgba(255,255,255,0.08)),
+        linear-gradient(180deg, rgba(255,159,67,0.92) 0%, rgba(255,79,154,0.92) 100%);
+      border: 3px solid rgba(255,255,255,0.62);
+      overflow: hidden;
+      transform: rotate(-6deg);
+      backdrop-filter: blur(8px);
+    }
+
+    .drink-glass::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      right: -8px;
+      top: 27px;
+      height: 16px;
+      background: rgba(255,255,255,0.25);
+      border-radius: 50%;
+      animation: liquidMove 2.8s ease-in-out infinite alternate;
+    }
+
+    .drink-glass::after {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 0;
+      width: 16px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.28), transparent);
+      transform: skewX(-12deg);
+      opacity: 0.75;
+    }
+
+    .ice {
+      position: absolute;
+      width: 19px;
+      height: 19px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(255,255,255,0.75);
+      z-index: 2;
+      box-shadow: inset 0 0 8px rgba(0,169,214,0.18);
+      animation: iceFloat 3s ease-in-out infinite;
+    }
+
+    .ice.one {
+      top: 51px;
+      left: 42px;
+      transform: rotate(14deg);
+    }
+
+    .ice.two {
+      top: 75px;
+      left: 69px;
+      width: 17px;
+      height: 17px;
+      transform: rotate(-18deg);
+      animation-delay: 0.6s;
+    }
+
+    .ice.three {
+      top: 91px;
+      left: 49px;
+      width: 15px;
+      height: 15px;
+      transform: rotate(28deg);
+      animation-delay: 1s;
+    }
+
+    .straw {
+      position: absolute;
+      left: 84px;
+      top: 2px;
+      width: 8px;
+      height: 102px;
+      background: linear-gradient(180deg, #fff, #ffe66d);
+      border-radius: 999px;
+      transform: rotate(18deg);
+      z-index: 3;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.18);
+    }
+
+    .straw::before {
+      content: "";
+      position: absolute;
+      top: -3px;
+      left: -18px;
+      width: 34px;
+      height: 8px;
+      border-radius: 999px;
+      background: #fff;
+      transform: rotate(-26deg);
+    }
+
+    .orange-slice {
+      position: absolute;
+      top: 39px;
+      left: 18px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, #ffd86b 0 34%, #ff9f43 35% 64%, #fff7d6 65% 72%, transparent 73%);
+      border: 2px solid rgba(255,255,255,0.7);
+      z-index: 4;
+      transform: rotate(-14deg);
+      animation: orangeWiggle 3.5s ease-in-out infinite;
+    }
+
+    .sparkle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #fff7d6;
+      box-shadow: 0 0 16px rgba(255,247,214,0.9);
+      animation: sparkle 2.5s ease-in-out infinite;
+    }
+
+    .sparkle.s1 {
+      top: 14px;
+      left: 16px;
+    }
+
+    .sparkle.s2 {
+      top: 118px;
+      right: 4px;
+      animation-delay: 0.9s;
+    }
+
+    .sparkle.s3 {
+      top: 62px;
+      right: 18px;
+      width: 6px;
+      height: 6px;
+      animation-delay: 1.4s;
+    }
+
+    @keyframes drinkFloat {
       0%, 100% {
-        transform: translateY(0) scale(1);
+        transform: translateY(0) rotate(0deg);
       }
       50% {
-        transform: translateY(10px) scale(1.04);
+        transform: translateY(10px) rotate(2deg);
+      }
+    }
+
+    @keyframes liquidMove {
+      from {
+        transform: translateX(-8px) rotate(-2deg);
+      }
+      to {
+        transform: translateX(8px) rotate(2deg);
+      }
+    }
+
+    @keyframes iceFloat {
+      0%, 100% {
+        margin-top: 0;
+      }
+      50% {
+        margin-top: -7px;
+      }
+    }
+
+    @keyframes orangeWiggle {
+      0%, 100% {
+        transform: rotate(-14deg);
+      }
+      50% {
+        transform: rotate(-4deg);
+      }
+    }
+
+    @keyframes sparkle {
+      0%, 100% {
+        transform: scale(0.7);
+        opacity: 0.35;
+      }
+      50% {
+        transform: scale(1.3);
+        opacity: 1;
       }
     }
 
@@ -271,6 +424,11 @@
       border-radius: 999px;
       background: rgba(255,255,255,0.10);
       border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-links a.map-top {
+      background: linear-gradient(135deg, #fff176, #ffb347);
+      color: #06314a;
     }
 
     main,
@@ -438,51 +596,45 @@
       backdrop-filter: blur(12px);
     }
 
+    .btn-instagram {
+      background: linear-gradient(135deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-instagram::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: translateX(-100%);
+      animation: instaShine 3.2s ease-in-out infinite;
+    }
+
+    .btn-instagram span,
+    .btn-instagram svg {
+      position: relative;
+      z-index: 1;
+    }
+
     .btn:hover {
       transform: translateY(-3px);
     }
 
-    .scroll-cue {
-      margin-top: 34px;
-      width: fit-content;
-      color: rgba(255,255,255,0.86);
-      font-size: 0.82rem;
-      font-weight: 850;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      opacity: 0.95;
+    .instagram-icon {
+      width: 22px;
+      height: 22px;
+      display: inline-block;
+      flex-shrink: 0;
     }
 
-    .mouse {
-      width: 24px;
-      height: 38px;
-      border: 2px solid rgba(255,255,255,0.65);
-      border-radius: 999px;
-      position: relative;
-    }
-
-    .mouse::before {
-      content: "";
-      position: absolute;
-      top: 7px;
-      left: 50%;
-      width: 4px;
-      height: 8px;
-      border-radius: 999px;
-      background: white;
-      transform: translateX(-50%);
-      animation: wheel 1.6s ease-in-out infinite;
-    }
-
-    @keyframes wheel {
+    @keyframes instaShine {
       0% {
-        transform: translate(-50%, 0);
-        opacity: 1;
+        transform: translateX(-100%);
       }
-      100% {
-        transform: translate(-50%, 12px);
-        opacity: 0;
+      45%, 100% {
+        transform: translateX(100%);
       }
     }
 
@@ -905,57 +1057,11 @@
       background: rgba(255,255,255,0.15);
     }
 
-    .instagram-icon {
-      width: 22px;
-      height: 22px;
-      display: inline-block;
-      flex-shrink: 0;
-    }
-
     footer {
-      padding: 32px 20px 110px;
+      padding: 32px 20px;
       background: #020f18;
       text-align: center;
       color: #bdefff;
-    }
-
-    .bottom-bar {
-      position: fixed;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      z-index: 80;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 8px;
-    }
-
-    .bottom-bar a {
-      text-align: center;
-      padding: 13px 8px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 950;
-      box-shadow: 0 14px 32px rgba(0,0,0,0.30);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-    }
-
-    .whatsapp {
-      background: var(--green);
-      color: #04210f;
-    }
-
-    .call {
-      background: var(--white);
-      color: var(--blue);
-    }
-
-    .map {
-      background: linear-gradient(135deg, #fff176, #ffb347);
-      color: #06314a;
     }
 
     @media (min-width: 760px) {
@@ -1001,19 +1107,42 @@
         grid-template-columns: repeat(3, 1fr);
       }
 
-      .bottom-bar {
-        display: none;
+      .drink-scene {
+        top: 104px;
+        right: 9%;
+        width: 168px;
+        height: 210px;
       }
 
-      footer {
-        padding-bottom: 32px;
+      .drink-glass {
+        left: 36px;
+        width: 92px;
+        height: 138px;
       }
 
-      .sunset-orb {
-        top: 110px;
-        right: 10%;
-        width: 190px;
-        height: 190px;
+      .ice.one {
+        top: 60px;
+        left: 55px;
+      }
+
+      .ice.two {
+        top: 87px;
+        left: 88px;
+      }
+
+      .ice.three {
+        top: 106px;
+        left: 63px;
+      }
+
+      .straw {
+        left: 108px;
+        height: 128px;
+      }
+
+      .orange-slice {
+        top: 46px;
+        left: 26px;
       }
     }
 
@@ -1050,12 +1179,29 @@
         height: 68px;
       }
 
-      .sunset-orb {
+      .drink-scene {
         width: 112px;
-        height: 112px;
-        top: 104px;
-        right: 12px;
-        opacity: 0.72;
+        height: 150px;
+        top: 108px;
+        right: 6px;
+        opacity: 0.92;
+      }
+
+      .drink-glass {
+        left: 23px;
+        width: 68px;
+        height: 105px;
+      }
+
+      .straw {
+        left: 74px;
+        height: 92px;
+      }
+
+      .orange-slice {
+        width: 32px;
+        height: 32px;
+        left: 14px;
       }
     }
   </style>
@@ -1066,11 +1212,22 @@
   <div class="page">
 
     <div class="ambient"></div>
-    <div class="sunset-orb"></div>
     <div class="water-lines"></div>
     <div class="floating-light one"></div>
     <div class="floating-light two"></div>
     <div class="floating-light three"></div>
+
+    <div class="drink-scene" aria-hidden="true">
+      <div class="straw"></div>
+      <div class="orange-slice"></div>
+      <div class="drink-glass"></div>
+      <div class="ice one"></div>
+      <div class="ice two"></div>
+      <div class="ice three"></div>
+      <div class="sparkle s1"></div>
+      <div class="sparkle s2"></div>
+      <div class="sparkle s3"></div>
+    </div>
 
     <header>
       <nav class="nav">
@@ -1080,9 +1237,9 @@
         </a>
 
         <div class="nav-links">
-          <a href="#foto">Foto</a>
           <a href="#eventi">Eventi</a>
           <a href="#prenota">Prenota</a>
+          <a class="map-top" href="https://maps.app.goo.gl/eyapTr4ahb2AjWLf9" target="_blank">Mappa</a>
         </div>
       </nav>
     </header>
@@ -1095,11 +1252,11 @@
             <img src="logo.jpg" alt="Il Muretto">
           </div>
 
-          <div class="tag">🌅 Lago · Aperitivi · Feste · Estate</div>
+          <div class="tag">🍹 Lago · Aperitivi · Feste · Estate</div>
 
           <h1>
             Il tuo
-            <span>tramonto</span>
+            <span>aperitivo</span>
           </h1>
 
           <p>
@@ -1110,12 +1267,15 @@
 
           <div class="buttons">
             <a class="btn btn-primary" href="#prenota">Prenota il tuo tavolo</a>
-            <a class="btn btn-secondary" href="#eventi">Scopri gli eventi</a>
-          </div>
 
-          <div class="scroll-cue">
-            <div class="mouse"></div>
-            <span>Scorri e scopri il locale</span>
+            <a class="btn btn-instagram" href="https://www.instagram.com/ilmurettomontefiasconelago?igsh=MTNqZHh4NXlhanZ1MA==" target="_blank">
+              <svg class="instagram-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" stroke="white" stroke-width="2"/>
+                <circle cx="17.5" cy="6.5" r="1.2" fill="white"/>
+              </svg>
+              <span>Seguici su Instagram</span>
+            </a>
           </div>
         </div>
       </section>
@@ -1415,14 +1575,6 @@
       © 2026 Il Muretto. Tutti i diritti riservati.
     </footer>
 
-    <div class="bottom-bar">
-      <a class="whatsapp" href="#prenota">Prenota</a>
-      <a class="call" href="tel:+393515838565">Chiama</a>
-      <a class="map" href="https://maps.app.goo.gl/eyapTr4ahb2AjWLf9" target="_blank">
-        Mappa
-      </a>
-    </div>
-
   </div>
 
   <script>
@@ -1475,16 +1627,15 @@
 
     window.addEventListener("scroll", function() {
       const scrollY = window.scrollY;
-
-      const orb = document.querySelector(".sunset-orb");
       const water = document.querySelector(".water-lines");
-
-      if (orb) {
-        orb.style.transform = "translateY(" + scrollY * 0.08 + "px)";
-      }
+      const drink = document.querySelector(".drink-scene");
 
       if (water) {
-        water.style.transform = "translateY(" + scrollY * 0.05 + "px)";
+        water.style.transform = "translateY(" + scrollY * 0.05 + "px) skewY(-2deg)";
+      }
+
+      if (drink) {
+        drink.style.marginTop = scrollY * 0.035 + "px";
       }
     });
   </script>
